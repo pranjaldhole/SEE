@@ -1,0 +1,14 @@
+1. Install Eclipse for Java
+2. Install leJOS: http://www.lejos.org/nxj.php
+3. Install Eclipse plugin for leJOS: http://www.lejos.org/nxt/nxj/tutorial/Preliminaries/UsingEclipse.htm
+4. Install the following:
+    sudo apt-get install libusb-dev
+    sudo apt-get install openjdk-8-jdk (or whichever is the default for your version of Ubuntu)
+    sudo apt-get install libbluetooth-dev
+
+5. Follow these instructions: http://www.lejos.org/nxt/nxj/tutorial/Preliminaries/GettingStartedLinux.htm
+    Note: leJOS firmware is probably already installed on the brick, so you can skip that step
+6. If uploading via USB does not work, try rebooting. If it still does not work, use bluetooth.
+
+
+In the template code, set the TRACK_WIDTH of your robot, and desired sleep times and turn rates.
