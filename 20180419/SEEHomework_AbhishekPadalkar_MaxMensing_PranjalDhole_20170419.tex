@@ -1,0 +1,124 @@
+\documentclass[11pt,a4paper,openright,twoside]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[inner=2cm,outer=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{epstopdf}
+\usepackage[singlespacing]{setspace}
+\usepackage{tabularx}
+\usepackage{mathrsfs}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fancyref}
+\usepackage{subcaption}
+\usepackage{braket}
+\usepackage{color}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage[pagebackref]{hyperref}
+\usepackage{afterpage}
+\usepackage[makeroom]{cancel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyhead[RE, LO]{{\nouppercase{\rightmark{Dhole, Mensing, Padalkar}}}}
+\fancyhead[LE, RO]{\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\fancyfoot{}
+\fancyfoot[RE, LO]{{\nouppercase{\leftmark{MAS-SS2018 | Hochschule Bonn-Rhein-Sieg}}}}
+\fancyfoot[LE, RO]{Due Date: 19.04.2018}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Scientific Experimentation and Evaluation Homework},    % title
+    pdfauthor={Pranjal Dhole},     % author
+    pdfsubject={Review},   % subject of the document
+    pdfcreator={Pranjal Dhole},   % creator of the document
+    pdfproducer={Pranjal Dhole}, % producer of the document
+    pdfkeywords={SEEHomework} {Scientific Experimentation and Evaluation}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=MidnightBlue, % color of internal links (change box color with linkbordercolor)
+    citecolor=Thistle,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=Sepia           % color of external links
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%specific
+\raggedbottom
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\section*{\underline{Scientific Experimentation and Evaluation}\\{Assignment 1.1}}
+\large{Abhishek Padalkar, Max Mensing, Pranjal Dhole}\\
+\large{Due date: Thursday, 19$^{\text{th}}$ April, 2018}
+\end{center}
+
+\subsection*{Deliverables 1.1}
+\subsubsection*{Experimental setup}
+\begin{itemize}
+\item \textbf{Measurement system}: Our measurement system would consist of robot placed on a paper sheet as floor. We would need to attach a marker such as pencil on robot which would trace the path traversed by the robot on the paper. Additionally we would mark the wheel positions both at the start and end of a trial to measure the change in pose of robot.
+
+\item \textbf{Measurand}: The physical quantity we'll be measuring will be the displacement length from initial position of robot to the end pose of robot traversed on the paper sheet.
+
+\item \textbf{Measured quantity}: The variable to be measured is the change in pose from start pose ($x,y,\theta$) to the end pose ($x',y',\theta'$) given by,
+\begin{align*}
+\delta x = x' - x = \delta_{\text{trans}} \cos(\theta + \delta_{\text{rot1}}) \\
+\delta y = y' - y = \delta_{\text{trans}} \sin(\theta + \delta_{\text{rot1}}) \\
+\delta \theta = \theta' - \theta = \text{rot1} + \text{rot1}
+\end{align*}
+\end{itemize}
+
+\subsubsection*{Expected problems}
+\begin{itemize}
+\item \textbf{Systematic errors}\footnote{Partial explanation of systematic error is derived from \href{http://www-personal.umich.edu/~johannb/Papers/paper59.pdf}{http://www-personal.umich.edu/$\sim$johannb/Papers/paper59.pdf}.}: Systematic errors are caused by difference in the theoretical model and actual design of the robot such as, in our case, unequal wheel diameters ($E_D$) and uncertainty about effective wheelbase($E_B$) would create a systematic error in expected distance travelled (theoretical model, $\delta_{\text{trans-th}}$) and actual distance travelled ($\delta_{\text{trans}}$). These errors are robot specific don't change for a robot. Thus these errors can be improved upon by measuring their individual contributions and counter-acting their effects in software.\\
+The error in wheel diameter can be defined as ratio between two wheel diameters,
+\begin{align*}
+E_D = \frac{D_R}{D_L}
+\end{align*}
+where $D_R$ and $D_L$ are actual right and left wheel diameters respectively. Error in wheel diameter affects the straight line motion whereas error in wheelbase affects the turning of the robot. The error in wheelbase is given as,
+\begin{align*}
+E_B = \frac{b_{\text{actual}}}{b_{\text{assumed}}}
+\end{align*}
+where $b_{\text{actual}}$ is the actual length of wheelbase and $b_{\text{assumed}}$ is the length of wheelbase assumed by software.
+\item \textbf{Random errors}: Random errors are caused by inability of the sensors to measure the input beyond certain resolution. In our case inability to resolve current supplied beyond certain resolution would result in slight deviations in torques torques generated in motor which results in wheel rotation and ultimately results in variations in distance travelled by robot. We can correct this error by repeating the experiment multiple number of times and taking the mean value of the measurements. The mean value of change of pose can be given as,
+\begin{align*}
+\overline{\delta x} = \frac{1}{20} \sum_{i=1}^{20} \delta x_i \\
+\overline{\delta y} = \frac{1}{20} \sum_{i=1}^{20} \delta y_i \\
+\overline{\delta \theta} = \frac{1}{20} \sum_{i=1}^{20} \delta \theta_i
+\end{align*}
+The standard error of the mean for each variable is given by,
+\begin{align*}
+\hat{\sigma}_{\overline{\delta x}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta x - \overline{\delta x})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta y}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta y - \overline{\delta y})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta \theta}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
+\end{align*}
+\end{itemize}
+
+\subsubsection*{Expected performance}
+\begin{itemize} 
+\item The uncertainty in pose due to random errors for each trial can be given as,
+\begin{align*}
+\delta x = \delta x_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta x}} \\
+\delta y = \delta y_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta y}} \\
+\delta \theta = \delta \theta_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta \theta}}
+\end{align*}
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
