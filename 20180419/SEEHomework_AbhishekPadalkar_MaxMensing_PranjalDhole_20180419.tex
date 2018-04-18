@@ -75,14 +75,29 @@
 \begin{itemize}
 \item \textbf{Measurement system}: Our measurement system would consist of robot placed on a paper sheet as floor. We will attach two LEDs pointed towards floor near wheels which would give reference for start and end position. Current position of wheels will be the projection of light from led on the floor. We will fix the start position at beginning of the experiment which will be invariant for all trials. \textit{Expected End Position}, which will be calculated analytically, will be marked on the floor at beginning of the experiment as well. Robots actual end position will be marked under the led focus. If necessary, additional arrangement of spacer tubes will be made two focus the light from LEDs. 
 
-\item \textbf{Measurand}: Measurand will be the end position of .
+\item \textbf{Measurand}: Measurand in this experiment will be co-ordinates of each wheel's end position. 
 
-\item \textbf{Measured quantity}: The variable to be measured is the change in pose from start pose ($x,y,\theta$) to the end pose ($x',y',\theta'$) given by,
-\begin{align*}
-\delta x = x' - x = \delta_{\text{trans}} \cos(\theta + \delta_{\text{rot1}}) \\
-\delta y = y' - y = \delta_{\text{trans}} \sin(\theta + \delta_{\text{rot1}}) \\
-\delta \theta = \theta' - \theta = \text{rot1} + \text{rot1}
-\end{align*}
+\item \textbf{Measured quantity}: The variable to be measured linear and angular deviation of end position of the wheels from expected end position. 
+
+\begin{itemize}
+	\item Linear Deviation of wheel 1 : 
+	$$\delta x_{w1} = x_{w1}' - x_{w1}$$
+	$$\delta y_{w1} = y_{w1}' - y_{w1}$$
+	\item Linear Deviation of wheel 2 : 
+	$$\delta x_{w2} = x_{w2}' - x_{w2}$$
+	$$\delta y_{w2} = y_{w2}' - y_{w2}$$
+	\item Mean Linear Deviation :  
+	$$\delta x_{m} = x_{m}' - x_{m}$$
+	$$\delta y_{m} = y_{m}' - y_{m}$$
+	\item Angular Deviation (Angle between two lines joining expected wheel position and experimental wheel positions) : 
+	$$\theta = tan^{-1}\frac{\delta x_{m}}{\delta y_{m}}$$
+	
+\end{itemize}
+
+
+
+
+
 \end{itemize}
 
 \subsubsection*{Expected problems}
@@ -109,7 +124,11 @@ The standard error of the mean for each variable is given by,
 \hat{\sigma}_{\overline{\delta y}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta y - \overline{\delta y})^2}{19 * 20}} \\
 \hat{\sigma}_{\overline{\delta \theta}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
 \end{align*}
+
+\item \textbf{Measurement errors}: Errors may occur while marking the positions of the wheels due to human error. Another possibility of human error while measuring the co-ordinates of the end position of wheels.   
+
 \end{itemize}
+
 
 \subsubsection*{Expected performance}
 \begin{itemize} 
