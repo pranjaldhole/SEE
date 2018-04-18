@@ -11,6 +11,7 @@
 \usepackage{epstopdf}
 \usepackage[singlespacing]{setspace}
 \usepackage{tabularx}
+\usepackage{arydshln}
 \usepackage{mathrsfs}
 \usepackage{rotating}
 \usepackage{caption}
@@ -70,7 +71,44 @@
 \large{Due date: Thursday, 19$^{\text{th}}$ April, 2018}
 \end{center}
 
-\subsection*{Deliverables 1.1}
+\subsection*{1. Soft tissue measurement experiment: Formalization general terms}
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcl}
+Measurand &-& Force \\
+Measurement &-& Axial Force\\
+Display &-& Digital (NI DAQ) \\
+Measurement Range &-& 0.0987N \\
+Measured (Quantity) Value &-& Indentation depth (mm)\\
+Measurement Result &-& 4.6N \\
+Device under Test &-& Force torque (FT) sensor \\
+Measurement Facility &-& Indenter \\
+Measurement System &-& Indenter + tissue model \\
+Meter &-& FT Sensor \\
+Measuring Principle &-& linear compression \\
+Measuring Method &-& compression in FT sensor's coordinate system \\
+Sensitivity &-& Axial Force - 0.04N \\
+\end{tabular}
+\end{table}
+
+\subsection*{2. Assignment 1.1}
+\begin{enumerate}
+\item As shown in fig.\ref{legobot}, we use LEDs that are separated from each other with a constant fixed distance as measurement facility.
+\item The designed robot is shown in fig.\ref{legobot}.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{lego_bot.jpg}
+\caption{Differential drive Lego bot with LEDs as measurement facility.}
+\label{legobot}
+\end{center}
+\end{figure}
+
+\item We mounted two LEDs in front in order to measure the robots initial and final pose. We will mark center of LEDs with pen/pencil on the graph sheet as initial and final position of the Lego bot. There would be measurement error caused by hand marking the center of LEDs (which is not precise) on the graph paper.
+
+\item The accuracy of the position marker measurement due to unresolved LED center resolution should be within 2-3mm.
+\end{enumerate}
+
+\subsection*{3. Deliverables 1.1}
 \subsubsection*{Experimental setup}
 \begin{itemize}
 \item \textbf{Measurement system}: Our measurement system would consist of robot placed on a paper sheet as floor. We will attach two LEDs pointed towards floor near wheels which would give reference for start and end position. Current position of wheels will be the projection of light from led on the floor. We will fix the start position at beginning of the experiment which will be invariant for all trials. \textit{Expected End Position}, which will be calculated analytically, will be marked on the floor at beginning of the experiment as well. Robots actual end position will be marked under the led focus. If necessary, additional arrangement of spacer tubes will be made two focus the light from LEDs. 
@@ -125,63 +163,22 @@ The standard error of the mean for each variable is given by,
 \hat{\sigma}_{\overline{\delta \theta}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
 \end{align*}
 
-\item \textbf{Measurement errors}: Errors may occur while marking the positions of the wheels due to human error. Another possibility of human error while measuring the co-ordinates of the end position of wheels.   
+\item \textbf{Measurement errors}: Errors may occur while marking the positions of the LED centres due to human error. Another possibility of human error while measuring the co-ordinates of the end position of wheels.   
 
 \end{itemize}
 
 
 \subsubsection*{Expected performance}
-\begin{itemize} 
+\begin{itemize}
+\item We would need to remove the systematic error caused by the mismatch between actual robot design and the robot motion model by subtracting the effective offset. However the effective offset resolution will be determined by the random and measurement error.
 \item The uncertainty in pose due to random errors for each trial can be given as,
 \begin{align*}
 \delta x = \delta x_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta x}} \\
 \delta y = \delta y_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta y}} \\
 \delta \theta = \delta \theta_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta \theta}}
 \end{align*}
+\item The accuracy of the position marker measurement due to unresolved LED center resolution should be within 2-3mm.
 \end{itemize}
-
-\subsection*{2B: Formalization general terms}
-
-\begin{itemize} 
-	\item Measurand
-	\begin{itemize} 
-		\item Newton
-	\end{itemize}
-	\item Measurement
-	\begin{itemize} 
-		\item Axial Force
-	\end{itemize}
-	\item Measurement Range
-	\begin{itemize} 
-		\item 0.0987N
-	\end{itemize}
-	\item Measured (Quantity) Value
-	\begin{itemize} 
-		\item ..
-	\end{itemize}
-	\item Measurement Result
-	\begin{itemize} 
-		\item 4.6N
-	\end{itemize}
-	\item Device under Test
-	\begin{itemize} 
-		\item FT Sensor
-	\end{itemize}
-	\item Measurement Facility
-	\item Measurement System
-	\item Meter
-	\begin{itemize} 
-		\item FT Sensor
-	\end{itemize}
-	\item Measuring Principle
-	\item Mesuring Method
-	\item Sensitivity
-	\begin{itemize} 
-		\item Axial Force - 0.04N
-	\end{itemize}
-	
-\end{itemize}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
