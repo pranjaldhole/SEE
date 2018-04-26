@@ -78,41 +78,6 @@
 
 \subsection*{1. Robot configuration}
 \label{robot-config}
-
-\begin{figure}[ht]
-  \begin{minipage}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=.9\textwidth]{front.jpeg}
-    \captionsetup{labelformat=empty}
-    \caption{Front view} 
-    \vspace{4ex}
-  \end{minipage}%%
-  \begin{minipage}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=.6\textwidth]{back.jpeg}
-    \captionsetup{labelformat=empty}
-    \caption{Back view} 
-    \vspace{4ex}
-  \end{minipage} 
-  \begin{minipage}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=.9\textwidth]{rightSide.jpeg}
-    \captionsetup{labelformat=empty}
-    \caption{Right side view} 
-    \vspace{4ex}
-  \end{minipage}%% 
-  \begin{minipage}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=.9\textwidth]{leftSide.jpeg}
-    \captionsetup{labelformat=empty}
-    \caption{Left side view} 
-    \vspace{4ex}
-  \end{minipage}
-\captionsetup{labelformat=empty}
-\caption{Lego robot design}
-\end{figure}
-
-\newpage
 \subsection*{2. Deliverables 1.2}
 \subsubsection*{2.1 Robot design}
 \textbf{Materials}
@@ -164,6 +129,54 @@ The corners of the grid paper were glued to the table in order to prevent an mov
 \end{figure}
 
 \item In fig. \ref{data}, the robot motion data is visualized. The initial positions are marked by `+' sign and the mean positions are marked by `x' sign.
+\item Linear Deviation of right wheel : 
+	$$\delta x_{wR} = x_{wR}' - x_{wR} \qquad \delta y_{wR} = y_{wR}' - y_{wR}$$
+\item Linear Deviation of left wheel : 
+	$$\delta x_{wL} = x_{wL}' - x_{wL} \qquad \delta y_{wL} = y_{wL}' - y_{wL}$$
+\item Angular Deviation (Angle between two lines joining expected wheel position and experimental wheel positions) : 
+	$$\delta \theta_i = tan^{-1}\frac{\delta x_{i}}{\delta y_{i}}$$
+\item \textbf{Random errors}: Random errors are caused by inability of the sensors to measure the input beyond certain resolution. In our case inability to resolve current supplied beyond certain resolution would result in slight deviations in torques torques generated in motor which results in wheel rotation and ultimately results in variations in distance travelled by robot. We can correct this error by repeating the experiment multiple number of times and taking the mean value of the measurements. The mean value of change of pose can be given as,
+\begin{align*}
+\overline{\delta x} = \frac{1}{20} \sum_{i=1}^{20} \delta x_i \\
+\overline{\delta y} = \frac{1}{20} \sum_{i=1}^{20} \delta y_i \\
+\overline{\delta \theta} = \frac{1}{20} \sum_{i=1}^{20} \delta \theta_i
+\end{align*}
+The standard error of the mean for each variable is given by,
+\begin{align*}
+\hat{\sigma}_{\overline{\delta x}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta x - \overline{\delta x})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta y}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta y - \overline{\delta y})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta \theta}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
+\end{align*}
+\item The uncertainty in pose due to random errors for each trial can be given as,
+\begin{align*}
+\delta x = \delta x_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta x}} \\
+\delta y = \delta y_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta y}} \\
+\delta \theta = \delta \theta_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta \theta}}
+\end{align*}
+\item \textbf{Measurement error}: The accuracy of the position marker measurement due to unresolved LED center resolution was $\pm 1mm$.
+\begin{table}[ht]
+\centering
+\begin{tabular}{| l | c | c | c | c | c | c |}
+\hline
+ & \multicolumn{2}{c|}{left-turn motion} & \multicolumn{2}{c|}{ right-turn motion} & \multicolumn{2}{c|}{straight motion} \\
+\hline
+ & right wheel & left wheel & right wheel & left wheel & right wheel & left wheel \\
+\hline
+Mean linear deviation $(\delta x, \delta y)$ cm & (0.1, 0.9) & (0.6, 0.8)
+& (0.7, 0.9) & (0.2, 0.9) & (0.5, 0.4) & 0.3, 0.4) \\
+\hline
+Mean ang. deviation ($\delta \theta$) degrees & 0.94 & 2.34 & 2.69 & 1.06 & 0.57 & 0.57 \\
+\hline
+$\sigma$ in final pose (x,y) cm & (0.3, 0.3) & (0.3, 0.3) & (0.3, 0.2) & (0.4, 0.5) & (0.2, 0.5) & (0.3, 0.5)\\
+\hline
+uncertainty in pose (x) cm & $(0.1 \pm 0.3)$ & $(0.6 \pm 0.3)$ & $(0.7 \pm 0.3)$ & $(0.2 \pm 0.4)$ & $(0.5 \pm 0.2)$ & $(0.3 \pm 0.3)$ \\
+uncertainty in pose (y) cm & $(0.9 \pm 0.3)$ & $(0.8 \pm 0.3)$ & $(0.9 \pm 0.2)$ & $(0.9 \pm 0.5)$ & $(0.4 \pm 0.5)$ & $(0.2 \pm 0.5)$ \\
+\hline
+\end{tabular}
+\caption{Statistical summary of robot motion}
+\label{stats}
+\end{table}
+
 \item In fig. \ref{left}, the standard deviation in readings of final wheel position for right and left wheels are (0.3, 0.3) cm and (0.3, 0.3) cm respectively.
 \item In fig. \ref{right}, the standard deviation in readings of final wheel position for right and left wheels are (0.3, 0.2) cm and (0.4, 0.5) cm respectively.
 \item In fig. \ref{straight}, the standard deviation in readings of final wheel positions for right and left wheels are (0.2, 0.5) cm and (0.3, 0.5) cm respectively.
@@ -171,5 +184,6 @@ The corners of the grid paper were glued to the table in order to prevent an mov
 \item The standard deviations for left and right turn motions are very similar.
 \item For straight line motion, we observe a substantial variation in y-readings.
 \end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

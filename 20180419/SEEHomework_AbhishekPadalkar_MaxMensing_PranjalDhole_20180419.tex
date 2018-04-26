@@ -29,6 +29,11 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\graphicspath{{images/}}
+
 \fancyhead{}
 \fancyhead[RE, LO]{{\nouppercase{\rightmark{Dhole, Mensing, Padalkar}}}}
 \fancyhead[LE, RO]{\thepage}
@@ -96,12 +101,45 @@ Sensitivity &-& Axial Force - 0.04N \\
 \item As shown in fig.\ref{legobot}, we use LEDs that are separated from each other with a constant fixed distance as measurement facility.
 \item The designed robot is shown in fig.\ref{legobot}.
 \begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{lego_bot.jpg}
-\caption{Differential drive Lego bot with LEDs as measurement facility.}
+  \begin{minipage}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=.9\textwidth]{front.jpeg}
+    \captionsetup{labelformat=empty}
+    \caption{Front view} 
+    \vspace{4ex}
+  \end{minipage}%%
+  \begin{minipage}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=.6\textwidth]{back.jpeg}
+    \captionsetup{labelformat=empty}
+    \caption{Back view} 
+    \vspace{4ex}
+  \end{minipage} 
+  \begin{minipage}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=.9\textwidth]{rightSide.jpeg}
+    \captionsetup{labelformat=empty}
+    \caption{Right side view} 
+    \vspace{4ex}
+  \end{minipage}%% 
+  \begin{minipage}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=.9\textwidth]{leftSide.jpeg}
+    \captionsetup{labelformat=empty}
+    \caption{Left side view} 
+    \vspace{4ex}
+  \end{minipage}
+\caption{Lego robot design}
 \label{legobot}
-\end{center}
 \end{figure}
+
+%\begin{figure}[ht]
+%\begin{center}
+%\includegraphics[width=0.7\textwidth]{lego_bot.jpg}
+%\caption{Differential drive Lego bot with LEDs as measurement facility.}
+%\label{legobot}
+%\end{center}
+%\end{figure}
 
 \item We mounted two LEDs in front in order to measure the robots initial and final pose. We will mark center of LEDs with pen/pencil on the graph sheet as initial and final position of the Lego bot. There would be measurement error caused by hand marking the center of LEDs (which is not precise) on the graph paper.
 
@@ -116,7 +154,6 @@ Sensitivity &-& Axial Force - 0.04N \\
 \item \textbf{Measurand}: Measurand in this experiment will be co-ordinates of each wheel's end position. 
 
 \item \textbf{Measured quantity}: The variable to be measured is linear and angular deviation of end position of the wheels from expected end position. 
-
 \begin{itemize}
 	\item Linear Deviation of wheel 1 : 
 	$$\delta x_{w1} = x_{w1}' - x_{w1}$$
@@ -128,14 +165,8 @@ Sensitivity &-& Axial Force - 0.04N \\
 	$$\delta x_{m} = x_{m}' - x_{m}$$
 	$$\delta y_{m} = y_{m}' - y_{m}$$
 	\item Angular Deviation (Angle between two lines joining expected wheel position and experimental wheel positions) : 
-	$$\theta = tan^{-1}\frac{\delta x_{m}}{\delta y_{m}}$$
-	
+	$$\delta \theta = tan^{-1}\frac{\delta x_{m}}{\delta y_{m}}$$
 \end{itemize}
-
-
-
-
-
 \end{itemize}
 
 \subsubsection*{Expected problems}
