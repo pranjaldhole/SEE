@@ -1,0 +1,109 @@
+\documentclass[11pt,a4paper,openright,twoside]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[inner=1cm,outer=3.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{epstopdf}
+\usepackage[singlespacing]{setspace}
+\usepackage{tabularx}
+\usepackage{mathrsfs}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fancyref}
+\usepackage{subcaption}
+\usepackage{braket}
+\usepackage{color}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage[pagebackref]{hyperref}
+\usepackage{afterpage}
+\usepackage[makeroom]{cancel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\graphicspath{{images/}}
+
+\usepackage{todonotes}
+
+\fancyhead{}
+\fancyhead[RE, LO]{{\nouppercase{\rightmark{Dhole, Mensing, Padalkar}}}}
+\fancyhead[LE, RO]{\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\fancyfoot{}
+\fancyfoot[RE, LO]{{\nouppercase{\leftmark{MAS-SS18 | Hochschule Bonn-Rhein-Sieg}}}}
+\fancyfoot[LE, RO]{Date: 03.05.2017}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Scientific Experimentation and Evaluation Homework},    % title
+    pdfauthor={Pranjal Dhole},     % author
+    pdfsubject={Review},   % subject of the document
+    pdfcreator={Pranjal Dhole},   % creator of the document
+    pdfproducer={Pranjal Dhole}, % producer of the document
+    pdfkeywords={SEEHomework} {Scientific Experimentation and Evaluation}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=MidnightBlue, % color of internal links (change box color with linkbordercolor)
+    citecolor=Thistle,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=Sepia           % color of external links
+}
+
+\newcommand{\sectionLine}{\begin{center}\line(1,0){500}\end{center}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%specific
+\raggedbottom
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\section*{\underline{Scientific Experimentation and Evaluation}}
+
+\large{\textbf{Assignment 3: Statistical Evaluation}}\\
+\large{Abhishek Padalkar, Max Mensing, Pranjal Dhole}\\
+\large{Due date: Thursday, 03$^{\text{rd}}$ May, 2018}
+\end{center}
+
+\subsection*{Assignment 2}
+\subsubsection*{1. Fix and, if necessary, rerun your experiment according to the feedback in class.}
+We were not suggested to re-run the experiment.
+
+\subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.}
+Evaluation of \textbf{systematic errors}.\todo{refer to the notebook, Abhishek needs to check if there is a way to compute commanded distance from motor commands.}
+
+\subsubsection*{3. Fit a Gaussian to your data and judge if the data is truly Gaussian or if it follows another distribution.}
+
+\subsubsection*{4. Compare the estimated uncertainty of the measurement process itself with the statistical uncertainty of the observed end poses.}
+
+\sectionLine
+\subsection*{Deliverables 2}
+Update your previous week’s report and add a description of the test for a match with a Gaussian distribution as well as a description of the observed differences between the observed and the computed motion and the actual and expected accuracy and precision. Include appropriate figures, diagrams, and images backing up any claims you make. The report must be self-contained and provide enough details to support any statement you make. If applicable, include a section on problems encountered. Your update should cover:
+
+\subsubsection*{1. Any possible pre-processing of your data, like outlier detection and removal.}
+We did not require any outlier detection algorithm since the data collection did not contain any outliers.
+
+\subsubsection*{2. Fit of a Gaussian, either two individual ones in the x and y directions for each of the three cases or a proper two-dimensional distribution per case.}
+
+\subsubsection*{3. Check whether the data are actually distributed according to a Gaussian distribution.}
+
+\subsubsection*{4. List of used software, including source of any function you wrote for performing your analysis.}
+
+\subsubsection*{5. An answer to the following question: When analysing the data with respect to the executed motions, which characteristic of the data do you establish here: the accuracy, the precision, or both?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
