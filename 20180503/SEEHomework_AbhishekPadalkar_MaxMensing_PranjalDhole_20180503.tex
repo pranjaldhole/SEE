@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper,openright,twoside]{extreport}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[inner=1cm,outer=3.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[inner=1cm,outer=1cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{textcomp}
@@ -113,25 +113,25 @@ We were not suggested to re-run the experiment.
 	distance between wheels (track width) = 14.5 cm 
 
 		$$v1 = r1 * \omega$$
-		$$v2 = (r1 + track_width) * \omega$$
+		$$v2 = (r1 + \text{track width} ) * \omega$$
 		$$\omega = \frac{18 * 0.4}{14.5}$$
-		$$\omega = 0.4966 rad/sec$$
+		$$\omega = 0.4966 \text{ rad/sec}$$
 		$$r1 = 21.75$$
-		$$W1x = sin(0.4966 * 2.25) * 21.75 = 19.552 $$
-		$$W1y = cos(0.4966 * 2.25) * 21.75 - 1.75 = 9.52 - 1.75 = 7.77$$
+		$$W1x = \sin(0.4966 * 2.25) * 21.75 = 19.552 $$
+		$$W1y = \cos(0.4966 * 2.25) * 21.75 - 1.75 = 9.52 - 1.75 = 7.77$$
 	
-		$$W2x = sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
-		$$W2y = cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.13$$
+		$$W2x = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
+		$$W2y = \cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.13$$
 
 	\item \textbf{Left Turn}
 	
 	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
 	
-	$$W2x = sin(0.4966 * 2.25) * 21.75 = 19.552 $$
-	$$W2y = cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.87$$
+	$$W2x = \sin(0.4966 * 2.25) * 21.75 = 19.552 $$
+	$$W2y = \cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.87$$
 	
-	$$W1x = sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
-	$$W1y = cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.22$$
+	$$W1x = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
+	$$W1y = \cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.22$$
 	
 	
 \end{itemize}
@@ -146,6 +146,12 @@ If the formula provided in the documentation of lejos API for calculating speed 
 
 
 \subsubsection*{3. Fit a Gaussian to your data and judge if the data is truly Gaussian or if it follows another distribution.}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{gaussian_fits.png}
+\caption{Gaussian fit for the data using scipy KernelDensity function}
+\end{figure}
 
 \subsubsection*{4. Compare the estimated uncertainty of the measurement process itself with the statistical uncertainty of the observed end poses.}
 
