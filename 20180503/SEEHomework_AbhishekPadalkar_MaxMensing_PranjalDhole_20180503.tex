@@ -151,6 +151,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 \centering
 \includegraphics[width=\textwidth]{gaussian_fits.png}
 \caption{Gaussian fit for the data using scipy KernelDensity function}
+\label{gaussian}
 \end{figure}
 
 \subsubsection*{4. Compare the estimated uncertainty of the measurement process itself with the statistical uncertainty of the observed end poses.}
@@ -163,10 +164,13 @@ Update your previous week’s report and add a description of the test for a mat
 We did not require any outlier detection algorithm since the data collection did not contain any outliers.
 
 \subsubsection*{2. Fit of a Gaussian, either two individual ones in the x and y directions for each of the three cases or a proper two-dimensional distribution per case.}
+We were able to fit the Gaussian to the data as shown in fig. \ref{gaussian}.
 
 \subsubsection*{3. Check whether the data are actually distributed according to a Gaussian distribution.}
+The data is too limited to conclude whether it comes from Gaussian distribution, however we were able to fit the data to a Gaussian distribution.
 
 \subsubsection*{4. List of used software, including source of any function you wrote for performing your analysis.}
+The software code is attached with the report.
 
 \subsubsection*{5. An answer to the following question: When analysing the data with respect to the executed motions, which characteristic of the data do you establish here: the accuracy, the precision, or both?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
