@@ -86,23 +86,64 @@ We were not suggested to re-run the experiment.
 
 \subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.}
 \begin{itemize}
-	\item Straight Motion
+	\item \textbf{Straight Motion}
+	
 	\textbf{Commanded Motion}
 	
 	commanded speed = 18 cm/sec
 	
 	time = 2250 milliseconds
 	
-	expected distance to be traveled = $ 18 * 2.25 = 40.5 cm $
+	expected distance to be traveled = $ 18 * 2.25 = 40.5 cm $ in x directon
+	
 	
 	\textbf{Observed motion}
 	
+	
+	\item \textbf{Right Turn}
+	
+	\textbf{Commanded Motion}
+		
+	commanded speed = 18 cm/sec
+	
+	time = 2250 milliseconds
+	
+	turn rate = 40
+	
+	distance between wheels (track width) = 14.5 cm 
+
+		$$v1 = r1 * \omega$$
+		$$v2 = (r1 + track_width) * \omega$$
+		$$\omega = \frac{18 * 0.4}{14.5}$$
+		$$\omega = 0.4966 rad/sec$$
+		$$r1 = 21.75$$
+		$$W1x = sin(0.4966 * 2.25) * 21.75 = 19.552 $$
+		$$W1y = cos(0.4966 * 2.25) * 21.75 - 1.75 = 9.52 - 1.75 = 7.77$$
+	
+		$$W2x = sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
+		$$W2y = cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.13$$
+
+	\item \textbf{Left Turn}
+	
+	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
+	
+	$$W2x = sin(0.4966 * 2.25) * 21.75 = 19.552 $$
+	$$W2y = cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.87$$
+	
+	$$W1x = sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
+	$$W1y = cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.22$$
+	
+	
 \end{itemize}
 
+In case of straight line motion, the commanded motion matches with the observed motion. Small random error can be observed in the readings but it can be the result of inaccurate placement of robot before starting the run, inaccurate measurement or LED displacement. 
+
+In case of turning motion, a large error can be observed. The facts for formula derivation for calculation of motion are taken from API provided by lejos library (\href{http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html#steer(double)}{link}). This API documentation does not clarify the effect of turn rate used in \textit{steer} function well enough. The absolute speed value of outer wheel is not clarified. Hence it is assumed to be equal to absolute speed set by DifferentialPilot. This can be the cause of error.
+Another reason of error can be the value of track width parsed in the code which is 18.6 cm but it is 14.5 cm on real robot.
+If the formula provided in the documentation of lejos API for calculating speed of each wheel set by steer function considers outer wheel's speed equal to absolute speed set by DifferentialPilot function, then the error in track width value must not have any effect on experiment. But clearly, this is not the fact, the assumptions made on turn speed and steer function are needed to be revisited and made cleared with some other sources.      
 
 
 
-Evaluation of \textbf{systematic errors}.\todo{refer to the notebook, Abhishek needs to check if there is a way to compute commanded distance from motor commands.}
 
 \subsubsection*{3. Fit a Gaussian to your data and judge if the data is truly Gaussian or if it follows another distribution.}
 
