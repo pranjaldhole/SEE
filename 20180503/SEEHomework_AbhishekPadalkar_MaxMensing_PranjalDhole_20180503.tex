@@ -156,6 +156,8 @@ If the formula provided in the documentation of lejos API for calculating speed 
 
 \subsubsection*{4. Compare the estimated uncertainty of the measurement process itself with the statistical uncertainty of the observed end poses.}
 
+
+
 \sectionLine
 \subsection*{Deliverables 2}
 Update your previous week’s report and add a description of the test for a match with a Gaussian distribution as well as a description of the observed differences between the observed and the computed motion and the actual and expected accuracy and precision. Include appropriate figures, diagrams, and images backing up any claims you make. The report must be self-contained and provide enough details to support any statement you make. If applicable, include a section on problems encountered. Your update should cover:
@@ -173,5 +175,7 @@ The data is too limited to conclude whether it comes from Gaussian distribution,
 The software code is attached with the report.
 
 \subsubsection*{5. An answer to the following question: When analysing the data with respect to the executed motions, which characteristic of the data do you establish here: the accuracy, the precision, or both?}
+
+Because of the offset in the analytical calculations and actual mean of the readings, we can say that the executed motion was not accurate. But executed motion shows repeatability with lower variance, hence it can be concluded that the motion was precise. We will be revisiting our calculations by clearing the facts related to parameters used in the code, experiment will be re-performed if needed. In conclusion, with current calculations, turning motion was not accurate but it was precise. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
