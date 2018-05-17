@@ -12,11 +12,15 @@ Exercises for Scientific Experimentation and Evaluation course
 + [Robot motion: calculations](robot_motion_model/SEEHomework_AbhishekPadalkar_MaxMensing_PranjalDhole_robot_motion_model.ipynb)
 
 
-### Todo - Feedback received on 2018-05-17
+### Todo
+#### Feedback received on 2018-05-17
 - [x] Axes labels in observed data plots: x and y were undefined.
 - [x] Add everything to report
-- [ ] Color code differences so that updated on feedback can be tracked.
+- [x] Color code differences so that updated on feedback can be tracked.
 - [ ] Too many significant digits in observed readings.
 - [x] Gaussian fits: X axes labels - add x and y with units.
 - [ ] Estimate the position of the robot and fit it with a Gaussian (x, y, theta)
 - [ ] Evaluate measurement uncertainty.
+
+#### Note
+For showing the update on feedback, use ``\update{text}`` in latex.
