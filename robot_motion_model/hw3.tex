@@ -3,7 +3,7 @@
 \subsubsection*{1. Fix and, if necessary, rerun your experiment according to the feedback in class.}
 We were not suggested to re-run the experiment.
 
-\subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.}
+\subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.} {\color{green}{All readings up to significant digits.}}
 \begin{itemize}
 	\item \textbf{Straight Motion}
 	
@@ -18,15 +18,15 @@ We were not suggested to re-run the experiment.
 	expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
 	
 	
-	\textbf{Observed motion}
+	\textbf{Observed motion}:
 	
-	mean distance traveled by right wheel in x-direction = 40.48 cm
+	mean distance traveled by right wheel in x-direction = 40.5 cm
 	
 	mean distance traveled by left wheel in x-direction = 40.3 cm 
 	
-	mean distance traveled by right wheel in y-direction = 0.055 cm 
+	mean distance traveled by right wheel in y-direction = 0.1 cm 
 	
-	mean distance traveled by left wheel in y-direction = 0.075 cm 
+	mean distance traveled by left wheel in y-direction = 0.1 cm 
 	
 	\item \textbf{Right Turn} \\
 	\textbf{Parameters set in API}: \newline
@@ -52,44 +52,44 @@ We were not suggested to re-run the experiment.
 \begin{equation}
 \begin{array}{rcl}
 r_i &=& \frac{v_o \cdot \frac{100 - t_r}{100}}{\omega} \\
-&=& 21.75 \text{cm}
+&=& 21.8 \text{cm}
 \end{array}
 \end{equation}
 
 The expected distance travelled by inner wheel $W_i$ is given by,
 \begin{equation}
-W_{ix} = \sin(\omega \cdot t) \cdot r_i = \sin(0.4966 * 2.25) * 21.75 = 19.552 \text{cm}
+W_{ix} = \sin(\omega \cdot t) \cdot r_i = \sin(0.4966 * 2.25) * 21.75 = 19.6 \text{cm}
 \end{equation}
 
 \begin{equation}
-W_{iy} = \cos(\omega \cdot t) \cdot r_i - \text{offset} =  \cos(0.4966 * 2.25) * 21.75 - 1.75 = 9.52 - 1.75 = 7.77 \text{cm}
+W_{iy} = \cos(\omega \cdot t) \cdot r_i - \text{offset} =  \cos(0.4966 * 2.25) * 21.75 - 1.75 = 9.52 - 1.75 = 7.8 \text{ cm}
 \end{equation}
 
 The expected distance travelled by outer wheel $W_o$ is given by,
 \begin{equation}
-W_{ox} = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58 \text{cm}
+W_{ox} = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.6 \text{ cm}
 \end{equation}
 
 \begin{equation}
-W_{oy} = \cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.13 \text{cm}
+W_{oy} = \cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.1 \text{ cm}
 \end{equation}
 
 	\item \textbf{Left Turn}
 	
 	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
 	
-	$$W2x = \sin(0.4966 * 2.25) * 21.75 = 19.552 $$
-	$$W2y = \cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.87$$
+	$$W2x = \sin(0.4966 * 2.25) * 21.75 = 19.6 \text{ cm}$$
+	$$W2y = \cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.9 \text{ cm}$$
 	
 	$$W1x = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.58$$
-	$$W1y = \cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.22$$
+	$$W1y = \cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.2 \text{ cm}$$
 	
 	
 \end{itemize}
 
 In case of straight line motion, the commanded motion matches with the observed motion. Small random error can be observed in the readings but it can be the result of inaccurate placement of robot before starting the run, inaccurate measurement or LED displacement. 
 
-In case of turning motion, a large error can be observed. The facts for formula derivation for calculation of motion are taken from API provided by lejos library (\href{http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html#steer(double)}{link}). This API documentation does not clarify the effect of turn rate used in \textit{steer} function well enough. The absolute speed value of outer wheel is not clarified. Hence it is assumed to be equal to absolute speed set by DifferentialPilot. This can be the cause of error.
+In case of turning motion, a large error can be observed. The facts for formula derivation for calculation of motion are taken from API provided by lejos library (\href{http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html#steer(double)}{link}\footnote{http://www.lejos.org/nxt/nxj/api/lejos/robotics/navigation/DifferentialPilot.html$\#$steer(double)}). This API documentation does not clarify the effect of turn rate used in \textit{steer} function well enough. The absolute speed value of outer wheel is not clarified. Hence it is assumed to be equal to absolute speed set by DifferentialPilot. This can be the cause of error.
 Another reason of error can be the value of track width parsed in the code which is 18.6 cm but it is 14.5 cm on real robot.
 If the formula provided in the documentation of lejos API for calculating speed of each wheel set by steer function considers outer wheel's speed equal to absolute speed set by DifferentialPilot function, then the error in track width value must not have any effect on experiment. But clearly, this is not the fact, the assumptions made on turn speed and steer function are needed to be revisited and made cleared with some other sources.      
 
@@ -99,7 +99,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{gaussian_fits.png}
-\caption{Gaussian fit for the data using scikit-learn KernelDensity function}
+\caption{Gaussian fit for the data using scikit-learn KernelDensity function. {\color{green}{x labels with units.}}}
 \label{gaussian}
 \end{figure}
 
