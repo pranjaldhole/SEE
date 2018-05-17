@@ -201,6 +201,30 @@ $2^{nd}$ uncertainty will cause huge error in measurement of wheel position whic
 
 $3^{rd}$ uncertainty will cause small error (1 - 2 mm) in linear position of wheels.
 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{| l | c | c | c | c | c | c |}
+\hline
+ & \multicolumn{2}{c|}{left-turn motion} & \multicolumn{2}{c|}{ right-turn motion} & \multicolumn{2}{c|}{straight motion} \\
+\hline
+ & right wheel & left wheel & right wheel & left wheel & right wheel & left wheel \\
+\hline
+Mean linear deviation $(\delta x, \delta y)$ cm & (0.1, 0.9) & (0.6, 0.8)
+& (0.7, 0.9) & (0.2, 0.9) & (0.5, 0.4) & 0.3, 0.4) \\
+\hline
+Mean ang. deviation ($\delta \theta$) degrees & 0.94 & 2.34 & 2.69 & 1.06 & 0.57 & 0.57 \\
+\hline
+$\sigma$ in final pose (x,y) cm & (0.3, 0.3) & (0.3, 0.3) & (0.3, 0.2) & (0.4, 0.5) & (0.2, 0.5) & (0.3, 0.5)\\
+\hline
+uncertainty in final pose (x) cm & $(0.3 \pm 0.3)$ & $(0.6 \pm 0.3)$ & $(0.7 \pm 0.3)$ & $(0.4 \pm 0.4)$ & $(0.5 \pm 0.2)$ & $(0.3 \pm 0.3)$ \\
+uncertainty in final pose (y) cm & $(0.9 \pm 0.3)$ & $(0.8 \pm 0.3)$ & $(0.9 \pm 0.2)$ & $(0.9 \pm 0.5)$ & $(0.5 \pm 0.5)$ & $(0.5 \pm 0.5)$ \\
+\hline
+\end{tabular}
+\caption{Statistical uncertainty of observed end poses robot from observations.}
+\label{stats}
+\end{table}
+
 \sectionLine
 \subsection*{Deliverables 2}
 Update your previous week’s report and add a description of the test for a match with a Gaussian distribution as well as a description of the observed differences between the observed and the computed motion and the actual and expected accuracy and precision. Include appropriate figures, diagrams, and images backing up any claims you make. The report must be self-contained and provide enough details to support any statement you make. If applicable, include a section on problems encountered. Your update should cover:
