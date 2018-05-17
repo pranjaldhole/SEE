@@ -94,24 +94,34 @@ We were not suggested to re-run the experiment.
 	
 	time = 2250 milliseconds
 	
-	expected distance to be traveled = $ 18 * 2.25 = 40.5 cm $ in x directon
+	expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm 
+	
+	expected distance to be traveled by by both wheels in x-axis direction = $0$ cm
 	
 	
 	\textbf{Observed motion}
 	
+	mean distance traveled by right wheel in x-direction = 40.48 cm
+	
+	mean distance traveled by left wheel in x-direction = 40.3 cm 
+	
+	mean distance traveled by right wheel in y-direction = 0.055 cm 
+	
+	mean distance traveled by left wheel in y-direction = 0.075 cm 
 	
 	\item \textbf{Right Turn}
 	
-	\textbf{Commanded Motion}
-		
-	commanded speed = 18 cm/sec
+	\textbf{Commanded Motion} \newline
+	Assume : \newline
 	
-	time = 2250 milliseconds
-	
-	turn rate = 40
-	
+	linear speed of right wheel = $v1$ \newline
+	linear speed of left wheel = $v2$ \newline
+	rotational speed of center of the axle of wheels = $\omega$ \newline
+	commanded speed = 18 cm/sec \newline
+	time = 2250 milliseconds \newline
+	turn rate = 40 \newline
 	distance between wheels (track width) = 14.5 cm 
-
+	
 		$$v1 = r1 * \omega$$
 		$$v2 = (r1 + \text{track width} ) * \omega$$
 		$$\omega = \frac{18 * 0.4}{14.5}$$
@@ -156,7 +166,40 @@ If the formula provided in the documentation of lejos API for calculating speed 
 
 \subsubsection*{4. Compare the estimated uncertainty of the measurement process itself with the statistical uncertainty of the observed end poses.}
 
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{| l | c | c | c | c | c | c |}
+		\hline
+		& \multicolumn{2}{c|}{left-turn motion} & \multicolumn{2}{c|}{ right-turn motion} & \multicolumn{2}{c|}{straight motion} \\
+		\hline
+		& right wheel & left wheel & right wheel & left wheel & right wheel & left wheel \\
+		\hline
+		Mean linear deviation $(\delta x, \delta y)$ cm & (0.1, 0.9) & (0.6, 0.8)
+		& (0.7, 0.9) & (0.2, 0.9) & (0.5, 0.4) & 0.3, 0.4) \\
+		\hline
+		Mean ang. deviation ($\delta \theta$) degrees & 0.94 & 2.34 & 2.69 & 1.06 & 0.57 & 0.57 \\
+		\hline
+		$\sigma$ in final pose (x,y) cm & (0.3, 0.3) & (0.3, 0.3) & (0.3, 0.2) & (0.4, 0.5) & (0.2, 0.5) & (0.3, 0.5)\\
+		\hline
+		uncertainty in pose (x) cm & $(0.1 \pm 0.3)$ & $(0.6 \pm 0.3)$ & $(0.7 \pm 0.3)$ & $(0.2 \pm 0.4)$ & $(0.5 \pm 0.2)$ & $(0.3 \pm 0.3)$ \\
+		uncertainty in pose (y) cm & $(0.9 \pm 0.3)$ & $(0.8 \pm 0.3)$ & $(0.9 \pm 0.2)$ & $(0.9 \pm 0.5)$ & $(0.4 \pm 0.5)$ & $(0.2 \pm 0.5)$ \\
+		\hline
+	\end{tabular}
+	\caption{Statistical summary of robot motion}
+	\label{stats}
+\end{table}
+There are three type of uncertainties which we estimated which can occur in the measurement. 
+\begin{enumerate}
+	\item Uncertainty in initial linear position of robot
+	\item Uncertainty in initial angular position of robot
+	\item uncertainty in measuring co-ordinates of the wheels
+\end{enumerate}   
 
+$1^{st}$ uncertainty will cause small linear error in measurement of wheel position equivalent to error in initial linear position.
+
+$2^{nd}$ uncertainty will cause huge error in measurement of wheel position which will increase with distance traveled by robot. 
+
+$3^{rd}$ uncertainty will cause small error (1 - 2 mm) in linear position of wheels.
 
 \sectionLine
 \subsection*{Deliverables 2}
