@@ -21,11 +21,8 @@ We were not suggested to re-run the experiment.
 	\textbf{Observed motion}:
 	
 	mean distance traveled by right wheel in x-direction = 40.5 cm
-	
 	mean distance traveled by left wheel in x-direction = 40.3 cm 
-	
 	mean distance traveled by right wheel in y-direction = 0.1 cm 
-	
 	mean distance traveled by left wheel in y-direction = 0.1 cm 
 	
 	\item \textbf{Right Turn} \\
@@ -49,10 +46,20 @@ We were not suggested to re-run the experiment.
 \end{array}
 \end{equation}
 
+The radius of the circle is given by,
 \begin{equation}
 \begin{array}{rcl}
 r_i &=& \frac{v_o \cdot \frac{100 - t_r}{100}}{\omega} \\
 &=& 21.8 \text{cm}
+\end{array}
+\end{equation}
+
+The final pose is computed as,
+\begin{equation}
+\begin{array}{rcl}
+x_r &=& 35.5 \text{cm} \\
+y_r &=& 5.6 \text{cm} \\
+\theta_r &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.4^{\circ}
 \end{array}
 \end{equation}
 
@@ -74,9 +81,17 @@ W_{ox} = \sin(0.4966 * 2.25) * (21.75 + 14.5) = 32.6 \text{ cm}
 W_{oy} = \cos(0.4966 * 2.25) * (21.75 + 14.5) - 1.75 = 15.87 - 1.75 = 13.1 \text{ cm}
 \end{equation}
 
-	\item \textbf{Left Turn}
+\item \textbf{Left Turn} \\
+The final pose is computed as,
+\begin{equation}
+\begin{array}{rcl}
+x_l &=& 35.5 \text{ cm} \\
+y_l &=& 105.8 \text{ cm} \\
+\theta_l &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.5^{\circ}
+\end{array}
+\end{equation}
 	
-	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
+Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
 	
 	$$W2x = \sin(0.4966 * 2.25) * 21.75 = 19.6 \text{ cm}$$
 	$$W2y = \cos(0.4966 * 2.25) * 21.75 + 42.35 = 9.52 + 42.35 = 51.9 \text{ cm}$$
