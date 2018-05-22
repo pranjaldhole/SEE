@@ -5,9 +5,15 @@ We were not suggested to re-run the experiment.
 
 \subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.} \update{All readings up to significant digits.}
 
-\includegraphics[scale=0.5]{exp_setup.png}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{exp_setup.png}
+\caption{Schematic diagram for specifying conventions.}
+\label{schematic-convention}
+\end{figure}
 
-Above diagram clarifies the signs and conventions used for following calculations. 
+
+Fig. \ref{schematic-convention} defines the signs and conventions used for following calculations. 
 \begin{itemize}
 	\item O : Origin of world co-ordinate frame
 	\item Xr : X-axis of robot co-ordinate frame 
@@ -28,20 +34,19 @@ On real robot, origin of robot co-ordinate frame coincides with the center of ax
 	\item distance between wheels (track width $t_w$) = 14.5 cm 
 \end{itemize}
 
+\begin{enumerate}
+\item \textbf{Straight motion}
+\begin{itemize}
+\item expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm
+\item expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
+\end{itemize}
 
+\textbf{Observed motion}:
+mean distance traveled by right wheel in x-direction = 40.5 cm\\
+mean distance traveled by left wheel in x-direction = 40.3 cm \\
+mean distance traveled by right wheel in y-direction = 0.1 cm \\
+mean distance traveled by left wheel in y-direction = 0.1 cm 
 
-expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm 
-	
-expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
-	
-	
-	\textbf{Observed motion}:
-	
-	mean distance traveled by right wheel in x-direction = 40.5 cm
-	mean distance traveled by left wheel in x-direction = 40.3 cm 
-	mean distance traveled by right wheel in y-direction = 0.1 cm 
-	mean distance traveled by left wheel in y-direction = 0.1 cm 
-	
 	\item \textbf{Right Turn} \\
 	\textbf{Parameters set in API}: \newline
 	commanded speed = 18 cm/sec \newline
@@ -114,7 +119,7 @@ Left turn is mirror motion of right turn, co-ordinates can be obtained by adding
 	$$W1y = \cos(0.4966 * 2.25) * (21.75 + 14.5) + 42.35 = 15.87 + 42.35 = 57.2 \text{ cm}$$
 	
 	
-\end{itemize}
+\end{enumerate}
 
 In case of straight line motion, the commanded motion matches with the observed motion. Small random error can be observed in the readings but it can be the result of inaccurate placement of robot before starting the run, inaccurate measurement or LED displacement. 
 
@@ -130,6 +135,29 @@ If the formula provided in the documentation of lejos API for calculating speed 
 \includegraphics[width=\textwidth]{gaussian_fits.png}
 \caption{Gaussian fit for the data using scikit-learn KernelDensity function. \update{x labels with units.}}
 \label{gaussian}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{right_motion_distribution.png}
+\caption{Right turn final pose.}
+\label{distribution-right-turn}
+\end{subfigure}
+\qquad
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{left_motion_distribution.png}
+\caption{Left turn final pose.}
+\label{distribution-right-turn}
+\end{subfigure}
+\qquad
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{straight_motion_distribution.png}
+\caption{Straight motion final pose.}
+\label{distribution-straight-motion}
+\end{subfigure}
+\caption{Gaussian and marginal distributions \update{Final pose distribution.}}
 \end{figure}
 
 \newpage
