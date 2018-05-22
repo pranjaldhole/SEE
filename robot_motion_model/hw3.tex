@@ -4,18 +4,35 @@
 We were not suggested to re-run the experiment.
 
 \subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.} \update{All readings up to significant digits.}
+
+\includegraphics[scale=0.5]{exp_setup.png}
+
+Above diagram clarifies the signs and conventions used for following calculations. 
 \begin{itemize}
-	\item \textbf{Straight Motion}
+	\item O : Origin of world co-ordinate frame
+	\item Xr : X-axis of robot co-ordinate frame 
+	\item Yr : X-axis of robot co-ordinate frame
+	\item $\theta$ : Rotation of Xr around O in CCW direction
+	\item (X, Y, $\theta$) :  Initial position and orientation of robot frame in world co-ordinate frame
+	\item (X1, Y1, $\theta$1) : Final position and orientation of robot frame after the trail in world co-ordinate frame
+\end{itemize}
+
+On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \newline
+
 	
-	\textbf{Commanded Motion}
+\textbf{Commanded Motion Parameters}
+\begin{itemize}
+	\item commanded speed = 18 cm/sec
+	\item time ($t$) = 2250 milliseconds
+	\item turn rate ($t_r$) = 40 
+	\item distance between wheels (track width $t_w$) = 14.5 cm 
+\end{itemize}
+
+
+
+expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm 
 	
-	commanded speed = 18 cm/sec
-	
-	time ($t$) = 2250 milliseconds
-	
-	expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm 
-	
-	expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
+expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
 	
 	
 	\textbf{Observed motion}:
@@ -29,10 +46,7 @@ We were not suggested to re-run the experiment.
 	\textbf{Parameters set in API}: \newline
 	commanded speed = 18 cm/sec \newline
 	time = 2250 milliseconds \newline
-	turn rate ($t_r$) = 40 \newline
-	
-	\textbf{Physical Dimensions} \\
-	distance between wheels (track width $t_w$) = 14.5 cm \\
+	\\
 	
 	Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
 	rotational speed of center of the axle of wheels = $\omega$ rad/s \newline
