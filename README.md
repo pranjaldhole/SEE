@@ -17,7 +17,7 @@ Exercises for Scientific Experimentation and Evaluation course
 - [x] Axes labels in observed data plots: x and y were undefined.
 - [x] Add everything to report
 - [x] Color code differences so that updated on feedback can be tracked.
-- [ ] Too many significant digits in observed readings.
+- [x] Too many significant digits in observed readings.
 - [x] Gaussian fits: X axes labels - add x and y with units.
 - [ ] Estimate the position of the robot and fit it with a Gaussian (x, y, theta)
 - [ ] Evaluate measurement uncertainty.
