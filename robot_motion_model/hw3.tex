@@ -22,100 +22,136 @@ Fig. \ref{schematic-convention} defines the signs and conventions used for follo
 	\item (X1, Y1, $\theta$1) : Final position and orientation of robot frame after the trail in world co-ordinate frame
 \end{itemize}
 
-On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \\
 
-\textbf{Commanded Motion Parameters}
+
+\par On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \newline
+\par Observing the geometrical structure, it is easy to conclude that position (X, Y) of the robot is geometric mean of positions of wheels. 
+
+\par
+\textbf{Parameters used in experiments}
 \begin{itemize}
-	\item commanded speed = 18 cm/sec
+	\item commanded speed for wheel ($v$) = 18 cm/sec
 	\item time ($t$) = 2250 milliseconds
 	\item turn rate ($t_r$) = 40 
 	\item distance between wheels (track width $t_w$) = 14.5 cm 
+	\item initial position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 cm, 20.6 cm) 
+	\item initial position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 cm, 35.1 cm)
+	\item initial pose of robot (X, Y, $\theta$) = (0.0 cm, 27.85 cm, 0.0 rad)
 \end{itemize}
-
+\par Orientation of the robot ($\theta$) can be calculated using individual wheel positions with help of following formula. 
+$$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 \begin{enumerate}
 \item \textbf{Straight motion}
-\begin{itemize}
-\item expected distance to be travelled by by both wheels in x-axis direction = $ 18\frac{\text{cm}}{\text{sec}}  \cdot 2.25 \text{ sec} = 40.5$ cm
-\item expected distance to be travelled by by both wheels in y-axis direction = $0$ cm
-\end{itemize}
 
-\textbf{Observed motion}:\\
-mean distance travelled by right wheel in x-direction = 40.5 cm\\
-mean distance travelled by left wheel in x-direction = 40.3 cm \\
-mean distance travelled by right wheel in y-direction = 0.1 cm \\
-mean distance travelled by left wheel in y-direction = 0.1 cm 
+	\textbf{Commanded Motion}
 
+	\begin{itemize}
+
+		\item expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
+	
+		\item expected position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 + $v\cdot t$, 20.6 cm) \\
+			   = (0.0 + 40.5 cm, 20.6 cm)\\
+			 = (40.5 cm, 20.6 cm)
+	
+		\item expected position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 + $v\cdot t$, 35.1 cm) \\
+		= (0.0 + 40.5 cm, 35.1 cm)\\
+		= (40.5 cm, 35.1 cm)
+	
+		\item expected position of robot ($X$, $Y$, $\theta$) = (0.0 + 40.5 cm, 27.85 cm, 0.0 rad) = (40.5 cm, 27.85 cm, 0.0 rad)
+	
+	
+	
+	
+	\end{itemize}
+	
+	\textbf{Observed motion}:
+	\begin{itemize}
+		\item mean distance traveled by right wheel in x-direction = 40.5 cm
+		
+		\item mean distance traveled by left wheel in x-direction = 40.3 cm 
+		
+		\item mean distance traveled by right wheel in y-direction = 0.1 cm 
+		
+		\item mean distance traveled by left wheel in y-direction = 0.1 cm 
+		
+		
+	\end{itemize}
+
+
+
+	
 \item \textbf{Right Turn} \\
-\textbf{Parameters set in API}: \\
-commanded speed = 18 cm/sec \\
-time = 2250 milliseconds \\
+	\textbf{Parameters set in API}: \newline
+	commanded speed = 18 cm/sec \newline
+	time = 2250 milliseconds \newline
 	
-Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
-rotational speed of center of the axle of wheels = $\omega$ rad/s \\
-linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s \\
-linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s \\
-
-\begin{equation}
-\omega = \cfrac{r_i \cdot \cfrac{t_r}{100}}{t_w} = \frac{18 * 0.4}{14.5} = 0.5 \text{ rad/sec}
-\end{equation}
-
-The radius of the circle is given by,
-\begin{equation}
-r_i = \cfrac{v_o \cdot \cfrac{100 - t_r}{100}}{\omega} = 21.8 \text{ cm}
-\end{equation}
-
-The final pose is computed as,
-\begin{equation}
-\begin{array}{rcl}
-x_r &=& 35.5 \text{ cm} \\
-y_r &=& 5.6 \text{ cm} \\
-\theta_r &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.4^{\circ}
-\end{array}
-\end{equation}
-
-The expected distance travelled by inner wheel $W_i$ is given by,
-\begin{equation}
-\begin{array}{rcl}
-W^R_{ix} &=& \sin(\omega \cdot t) \cdot r_i = \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
-W^R_{iy} &=& \cos(\omega \cdot t) \cdot r_i - \text{offset} =  \cos(0.5 * 2.25) * 21.8 - 1.75 = 9.5 - 1.8 = 7.8 \text{ cm}
-\end{array}
-\end{equation}
-
-The expected distance travelled by outer wheel $W_o$ is given by,
-\begin{equation}
-\begin{array}{rcl}
-W^R_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm} \\
-W^R_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) - 1.8 = 15.9 - 1.8 = 13.1 \text{ cm}
-\end{array}
-\end{equation}
-
-\item \textbf{Left Turn} \\
-The final pose is computed as,
-\begin{equation}
-\begin{array}{rcl}
-x_l &=& 35.5 \text{ cm} \\
-y_l &=& 105.8 \text{ cm} \\
-\theta_l &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.5^{\circ}
-\end{array}
-\end{equation}
+		
+	Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
+	rotational speed of center of the axle of wheels = $\omega$ rad/s \newline
+	linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s \newline
+	linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s \newline
 	
-Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
-
-The expected distance travelled by inner wheel $W_i$ is given by,
-\begin{equation}
-\begin{array}{rcl}
-W^L_{ix} &=& \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
-W^L_{iy} &=& \cos(0.5 * 2.25) * 21.8 + 42.4 = 9.5 + 42.4 = 51.9 \text{ cm}
-\end{array}
-\end{equation}
-
-The expected distance travelled by outer wheel $W_o$ is given by,
-\begin{equation}
-\begin{array}{rcl}
-W^L_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm}\\
-W^L_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) + 42.4 = 15.9 + 42.4 = 57.2 \text{ cm}$$
-\end{array}
-\end{equation}
+	\begin{equation}
+	\omega = \cfrac{r_i \cdot \cfrac{t_r}{100}}{t_w} = \frac{18 * 0.4}{14.5} = 0.5 \text{ rad/sec}
+	\end{equation}
+	
+	The radius of the circle is given by,
+	\begin{equation}
+	r_i = \cfrac{v_o \cdot \cfrac{100 - t_r}{100}}{\omega} = 21.8 \text{ cm}
+	\end{equation}
+	
+	The final pose is computed as,
+	\begin{equation}
+	\begin{array}{rcl}
+	x_r &=& 35.5 \text{ cm} \\
+	y_r &=& 5.6 \text{ cm} \\
+	\theta_r &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.4^{\circ}
+	\end{array}
+	\end{equation}
+	
+	The expected distance travelled by inner wheel $W_i$ is given by,
+	\begin{equation}
+	\begin{array}{rcl}
+	W^R_{ix} &=& \sin(\omega \cdot t) \cdot r_i = \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
+	W^R_{iy} &=& \cos(\omega \cdot t) \cdot r_i - \text{offset} =  \cos(0.5 * 2.25) * 21.8 - 1.75 = 9.5 - 1.8 = 7.8 \text{ cm}
+	\end{array}
+	\end{equation}
+	
+	The expected distance travelled by outer wheel $W_o$ is given by,
+	\begin{equation}
+	\begin{array}{rcl}
+	W^R_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm} \\
+	W^R_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) - 1.8 = 15.9 - 1.8 = 13.1 \text{ cm}
+	\end{array}
+	\end{equation}
+	
+	\item \textbf{Left Turn} \\
+	The final pose is computed as,
+	\begin{equation}
+	\begin{array}{rcl}
+	x_l &=& 35.5 \text{ cm} \\
+	y_l &=& 105.8 \text{ cm} \\
+	\theta_l &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.5^{\circ}
+	\end{array}
+	\end{equation}
+		
+	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
+	
+	The expected distance traveled by inner wheel $W_i$ is given by,
+	\begin{equation}
+	\begin{array}{rcl}
+	W^L_{ix} &=& \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
+	W^L_{iy} &=& \cos(0.5 * 2.25) * 21.8 + 42.4 = 9.5 + 42.4 = 51.9 \text{ cm}
+	\end{array}
+	\end{equation}
+	
+	The expected distance traveled by outer wheel $W_o$ is given by,
+	\begin{equation}
+	\begin{array}{rcl}
+	W^L_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm}\\
+	W^L_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) + 42.4 = 15.9 + 42.4 = 57.2 \text{ cm}$$
+	\end{array}
+	\end{equation}
 	
 \end{enumerate}
 
