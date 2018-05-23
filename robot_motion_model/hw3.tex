@@ -17,41 +17,58 @@ Above diagram clarifies the signs and conventions used for following calculation
 	\item (X1, Y1, $\theta$1) : Final position and orientation of robot frame after the trail in world co-ordinate frame
 \end{itemize}
 
-On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \newline
+\par On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \newline
+\par Observing the geometrical structure, it is easy to conclude that position (X, Y) of the robot is geometric mean of positions of wheels. 
 
-	
-\textbf{Commanded Motion Parameters}
+\textbf{Parameters used in experiments}
 \begin{itemize}
 	\item commanded speed = 18 cm/sec
 	\item time ($t$) = 2250 milliseconds
 	\item turn rate ($t_r$) = 40 
 	\item distance between wheels (track width $t_w$) = 14.5 cm 
+	\item initial position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 cm, 20.6 cm) 
+	\item initial position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 cm, 35.1 cm)
+	\item initial pose (X, Y, $\theta$) = (0.0 cm, 27.85 cm, 0.0 rad)
 \end{itemize}
+\par Orientation of the robot ($\theta$) can be calculated using individual wheel positions with help of following formula. 
 
+$$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 
+\textbf{Straight Motion}
+\textbf{Commanded Motion}
 
 expected distance to be traveled by by both wheels in x-axis direction = $ 18 * 2.25 = 40.5$ cm 
 	
 expected distance to be traveled by by both wheels in y-axis direction = $0$ cm
+
+expected position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 + 40.5 cm, 20.6 cm) = (40.5 cm, 20.6 cm)
+
+expected position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 + 40.5 cm, 35.1 cm) = (40.5 cm, 35.1 cm)
+
+expected position of robot ($X$, $Y$, $\theta$) = (0.0 + 40.5 cm, 35.1 cm, 0.0 rad) = (40.5 cm, 35.1 cm, 0.0 rad)
+
+
 	
+\textbf{Observed motion}:
 	
-	\textbf{Observed motion}:
+mean distance traveled by right wheel in x-direction = 40.5 cm
+
+mean distance traveled by left wheel in x-direction = 40.3 cm 
+
+mean distance traveled by right wheel in y-direction = 0.1 cm 
+
+mean distance traveled by left wheel in y-direction = 0.1 cm 
 	
-	mean distance traveled by right wheel in x-direction = 40.5 cm
-	mean distance traveled by left wheel in x-direction = 40.3 cm 
-	mean distance traveled by right wheel in y-direction = 0.1 cm 
-	mean distance traveled by left wheel in y-direction = 0.1 cm 
+\textbf{Right Turn} \\
+\textbf{Parameters set in API}: \newline
+commanded speed = 18 cm/sec \newline
+time = 2250 milliseconds \newline
+\\
 	
-	\item \textbf{Right Turn} \\
-	\textbf{Parameters set in API}: \newline
-	commanded speed = 18 cm/sec \newline
-	time = 2250 milliseconds \newline
-	\\
-	
-	Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
-	rotational speed of center of the axle of wheels = $\omega$ rad/s \newline
-	linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s \newline
-	linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s \newline
+Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
+rotational speed of center of the axle of wheels = $\omega$ rad/s \newline
+linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s \newline
+linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s \newline
 \begin{equation}
 \begin{array}{rcl}
 \omega &=& \frac{r_i \cdot \frac{t_r}{100}}{t_w} \\
