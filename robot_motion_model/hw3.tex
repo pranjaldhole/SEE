@@ -44,9 +44,9 @@ Fig. \ref{schematic-convention} defines the signs and conventions used for follo
 	\item linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s.
 	\item linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s.
 	\end{itemize}
-	\item Distance of inner wheel from center of rotation ($r_i$) in cm 
+	\item Distance of center of robot axle from center of rotation ($r_i$) in cm 
 	\item rotational speed of center of the axle of wheels = $\omega$ rad/s.
-	\item distance between wheels (track width $t_w$) = 14.5 cm 
+	\item distance between wheels (track width $t_w$) = 11.4 cm 
 	\item initial position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 cm, 20.6 cm) 
 	\item initial position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 cm, 35.1 cm)
 	\item initial pose of robot (X, Y, $\theta$) = (0.0 cm, 27.85 cm, 0.0 rad)
@@ -98,10 +98,10 @@ where $s$ is straight-line displacement between the initial and final pose and $
 	
 \textbf{Observed motion}:
 \begin{itemize}
-\item mean distance travelled by right wheel in x-direction = 40.5 cm
-\item mean distance travelled by left wheel in x-direction = 40.3 cm 
-\item mean distance travelled by right wheel in y-direction = 0.1 cm 
-\item mean distance travelled by left wheel in y-direction = 0.1 cm 
+\item mean distance traveled by right wheel in x-direction = 40.5 cm
+\item mean distance traveled by left wheel in x-direction = 40.3 cm 
+\item mean distance traveled by right wheel in y-direction = 0.1 cm 
+\item mean distance traveled by left wheel in y-direction = 0.1 cm 
 \end{itemize}
 
 The observed final pose is given as,
@@ -114,69 +114,54 @@ y_r &=& 27.9 \text{ cm} \\
 \end{equation}
 	
 \item \textbf{Right Turn} \\
-The angular velocity is computed as follows:
-	\begin{equation}
-	\omega = \cfrac{r_i \cdot \cfrac{t_r}{100}}{t_w} = \frac{18 * 0.4}{14.5} = 0.5 \text{ rad/sec}
-	\end{equation}
-	
+	\textbf{Expected motion}
+	\newline
 	The radius of the circle is given by,
 	\begin{equation}
-	r_i = \cfrac{v_o \cdot \cfrac{100 - t_r}{100}}{\omega} = 21.8 \text{ cm}
+	r_i = \cfrac{\cfrac{(100 - t_r)\cdot t_{w}}{100}}{2 \cdot \cfrac{t_{r}}{100}} = 22.8 \text{ cm}
 	\label{radius-circle}
+	\end{equation}
+	
+	The angular velocity is computed as follows:
+	\begin{equation}
+	\omega = \cfrac{r_i \cdot \cfrac{t_r}{100}}{t_w} = \frac{18}{22.8} = 0.79 \text{ rad/sec}
 	\end{equation}
 	
 	The final pose is computed as,
 	\begin{equation}
 	\begin{array}{rcl}
-	x_r &=& 35.5 \text{ cm} \\
-	y_r &=& 5.6 \text{ cm} \\
+	x_r &=& r_{i}\cdot sin(\omega * t) - 4.8 \text{ cm} = 17.5 \text{ cm}\\
+	y_r &=& r_{i}\cdot sin(\omega * t) + 5.05 \text{ cm} = 0.5 \text{ cm} \\
 	\theta_r &=& 89.4^{\circ} \qquad \text{(Using Eq. \ref{lr-ang-pose})}
 	\end{array}
 	\end{equation}
 	
-	The expected distance travelled by inner wheel $W_i$ is given by,
-	\begin{equation}
-	\begin{array}{rcl}
-	W^R_{ix} &=& \sin(\omega \cdot t) \cdot r_i = \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
-	W^R_{iy} &=& \cos(\omega \cdot t) \cdot r_i - \text{offset} =  \cos(0.5 * 2.25) * 21.8 - 1.75 = 9.5 - 1.8 = 7.8 \text{ cm}
-	\end{array}
-	\end{equation}
 	
-	The expected distance travelled by outer wheel $W_o$ is given by,
-	\begin{equation}
-	\begin{array}{rcl}
-	W^R_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm} \\
-	W^R_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) - 1.8 = 15.9 - 1.8 = 13.1 \text{ cm}
-	\end{array}
-	\end{equation}
+	\textbf{Observed motion}
+	
+	$ x_{r} = 17.8 \text{ cm}$\\
+	$ y_{r} = 2.8 \text{ cm}$
 	
 	\item \textbf{Left Turn} \\
+	
+	\textbf{Expected motion}
+	
+	The left turn motion is mirrored motion that of right turn about the line passing robot's initial position and parallel to x-axis. 
+	hence,
+	
 	The final pose is computed as,
 	\begin{equation}
 	\begin{array}{rcl}
-	x_l &=& 35.5 \text{ cm} \\
-	y_l &=& 105.8 \text{ cm} \\
-	\theta_l &=& 89.5^{\circ} \qquad \text{(Using Eq. \ref{lr-ang-pose})}
-	\end{array}
-	\end{equation}
-		
-	Left turn is mirror motion of right turn, co-ordinates can be obtained by adding translations. 
-	
-	The expected distance traveled by inner wheel $W_i$ is given by,
-	\begin{equation}
-	\begin{array}{rcl}
-	W^L_{ix} &=& \sin(0.5 * 2.25) * 21.8 = 19.6 \text{ cm} \\
-	W^L_{iy} &=& \cos(0.5 * 2.25) * 21.8 + 42.4 = 9.5 + 42.4 = 51.9 \text{ cm}
+	x_r &=& r_{i}\cdot sin(\omega * t) - 4.8 \text{ cm} = 17.5 \text{ cm}\\
+	y_r &=& 50.15 - r_{i}\cdot sin(\omega * t) \text{ cm} = 50.15 - (-4.7) = 54.8 \text{ cm} \\
+	\theta_r &=& 89.4^{\circ} \qquad \text{(Using Eq. \ref{lr-ang-pose})}
 	\end{array}
 	\end{equation}
 	
-	The expected distance traveled by outer wheel $W_o$ is given by,
-	\begin{equation}
-	\begin{array}{rcl}
-	W^L_{ox} &=& \sin(0.5 * 2.25) * (21.8 + 14.5) = 32.6 \text{ cm}\\
-	W^L_{oy} &=& \cos(0.5 * 2.25) * (21.8 + 14.5) + 42.4 = 15.9 + 42.4 = 57.2 \text{ cm}$$
-	\end{array}
-	\end{equation}
+	\textbf{Observed motion}
+	
+	$x_{r} = 17.8 \text{ cm}$\\
+	$y_{r} = 52.9 \text{ cm}$
 	
 \end{enumerate}
 
