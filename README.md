@@ -19,8 +19,8 @@ Exercises for Scientific Experimentation and Evaluation course
 - [x] Color code differences so that updated on feedback can be tracked.
 - [x] Too many significant digits in observed readings.
 - [x] Gaussian fits: X axes labels - add x and y with units.
-- [ ] Estimate the position of the robot and fit it with a Gaussian (x, y, theta)
-- [ ] Evaluate measurement uncertainty.
+- [x] Estimate the position of the robot and fit it with a Gaussian (x, y, theta)
+- [x] Evaluate measurement uncertainty.
 
 #### Note
 For showing the update on feedback, use ``\update{text}`` in latex.
