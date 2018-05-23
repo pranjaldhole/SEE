@@ -94,17 +94,36 @@ Sensitivity &-& Axial Force - 0.04N \\
 
 \item \textbf{Measured quantity}: The variable to be measured is linear and angular deviation of end position of the wheels from expected end position. 
 \begin{itemize}
-	\item Linear Deviation of wheel 1 : 
-	$$\delta x_{w1} = x_{w1}' - x_{w1}$$
-	$$\delta y_{w1} = y_{w1}' - y_{w1}$$
-	\item Linear Deviation of wheel 2 : 
-	$$\delta x_{w2} = x_{w2}' - x_{w2}$$
-	$$\delta y_{w2} = y_{w2}' - y_{w2}$$
-	\item Mean Linear Deviation :  
-	$$\delta x_{m} = x_{m}' - x_{m}$$
-	$$\delta y_{m} = y_{m}' - y_{m}$$
-	\item Angular Deviation (Angle between two lines joining expected wheel position and experimental wheel positions) : 
-	$$\delta \theta = tan^{-1}\frac{\delta x_{m}}{\delta y_{m}}$$
+	\item Linear Deviation of wheel 1:
+	\begin{equation}
+	\begin{array}{rcl}
+	\delta x_{w1} &=& x_{w1}' - x_{w1} \\
+	\delta y_{w1} &=& y_{w1}' - y_{w1}
+	\end{array}
+	\end{equation}
+
+	\item Linear Deviation of wheel 2:
+	\begin{equation}
+	\begin{array}{rcl}
+	\delta x_{w2} &=& x_{w2}' - x_{w2}\\
+	\delta y_{w2} &=& y_{w2}' - y_{w2}
+	\end{array}
+	\end{equation}
+	
+	\item Mean Linear Deviation:
+	\begin{equation}
+	\begin{array}{rcl}
+	\delta x_{m} &=& x_{m}' - x_{m} \\
+	\delta y_{m} &=& y_{m}' - y_{m}
+	\end{array}
+	\label{mean-linear-deviation}
+	\end{equation}
+	
+	\item Angular Deviation (Angle between two lines joining expected wheel position and experimental wheel positions):
+	\begin{equation}
+	\delta \theta = tan^{-1}\frac{\delta x_{m}}{\delta y_{m}}
+	\label{angular-dev}
+	\end{equation}
 \end{itemize}
 \end{itemize}
 
@@ -112,26 +131,38 @@ Sensitivity &-& Axial Force - 0.04N \\
 \begin{itemize}
 \item \textbf{Systematic errors}\footnote{Partial explanation of systematic error is derived from \href{http://www-personal.umich.edu/~johannb/Papers/paper59.pdf}{http://www-personal.umich.edu/$\sim$johannb/Papers/paper59.pdf}.}: Systematic errors are caused by difference in the theoretical model and actual design of the robot such as, in our case, unequal wheel diameters ($E_D$) and uncertainty about effective wheelbase($E_B$) would create a systematic error in expected distance travelled (theoretical model, $\delta_{\text{trans-th}}$) and actual distance travelled ($\delta_{\text{trans}}$). These errors are robot specific don't change for a robot. Thus these errors can be improved upon by measuring their individual contributions and counter-acting their effects in software.\\
 The error in wheel diameter can be defined as ratio between two wheel diameters,
-\begin{align*}
+\begin{equation}
 E_D = \frac{D_R}{D_L}
-\end{align*}
+\label{wheel-error}
+\end{equation}
+
 where $D_R$ and $D_L$ are actual right and left wheel diameters respectively. Error in wheel diameter affects the straight line motion whereas error in wheelbase affects the turning of the robot. The error in wheelbase is given as,
-\begin{align*}
+
+\begin{equation}
 E_B = \frac{b_{\text{actual}}}{b_{\text{assumed}}}
-\end{align*}
+\label{track-width-error}
+\end{equation}
+
 where $b_{\text{actual}}$ is the actual length of wheelbase and $b_{\text{assumed}}$ is the length of wheelbase assumed by software.
 \item \textbf{Random errors}: Random errors are caused by inability of the sensors to measure the input beyond certain resolution. In our case inability to resolve current supplied beyond certain resolution would result in slight deviations in torques torques generated in motor which results in wheel rotation and ultimately results in variations in distance travelled by robot. We can correct this error by repeating the experiment multiple number of times and taking the mean value of the measurements. The mean value of change of pose can be given as,
-\begin{align*}
-\overline{\delta x} = \frac{1}{20} \sum_{i=1}^{20} \delta x_i \\
-\overline{\delta y} = \frac{1}{20} \sum_{i=1}^{20} \delta y_i \\
-\overline{\delta \theta} = \frac{1}{20} \sum_{i=1}^{20} \delta \theta_i
-\end{align*}
+\begin{equation}
+\begin{array}{rcl}
+\overline{\delta x} &=& \frac{1}{20} \sum_{i=1}^{20} \delta x_i \\
+\overline{\delta y} &=& \frac{1}{20} \sum_{i=1}^{20} \delta y_i \\
+\overline{\delta \theta} &=& \frac{1}{20} \sum_{i=1}^{20} \delta \theta_i
+\end{array}
+\label{mean-deviation}
+\end{equation}
+
 The standard error of the mean for each variable is given by,
-\begin{align*}
-\hat{\sigma}_{\overline{\delta x}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta x - \overline{\delta x})^2}{19 * 20}} \\
-\hat{\sigma}_{\overline{\delta y}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta y - \overline{\delta y})^2}{19 * 20}} \\
-\hat{\sigma}_{\overline{\delta \theta}} = \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
-\end{align*}
+\begin{equation}
+\begin{array}{rcl}
+\hat{\sigma}_{\overline{\delta x}} &=& \sqrt{\frac{\sum_{i=1}^{20} (\delta x - \overline{\delta x})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta y}} &=& \sqrt{\frac{\sum_{i=1}^{20} (\delta y - \overline{\delta y})^2}{19 * 20}} \\
+\hat{\sigma}_{\overline{\delta \theta}} &=& \sqrt{\frac{\sum_{i=1}^{20} (\delta \theta - \overline{\delta \theta})^2}{19 * 20}}
+\end{array}
+\label{standard-deviation}
+\end{equation}
 
 \item \textbf{Measurement errors}: Errors may occur while marking the positions of the LED centres due to human error. Another possibility of human error while measuring the co-ordinates of the end position of wheels.   
 
@@ -142,11 +173,14 @@ The standard error of the mean for each variable is given by,
 \begin{itemize}
 \item We would need to remove the systematic error caused by the mismatch between actual robot design and the robot motion model by subtracting the effective offset. However the effective offset resolution will be determined by the random and measurement error.
 \item The uncertainty in pose due to random errors for each trial can be given as,
-\begin{align*}
-\delta x = \delta x_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta x}} \\
-\delta y = \delta y_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta y}} \\
-\delta \theta = \delta \theta_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta \theta}}
-\end{align*}
+\begin{equation}
+\begin{array}{rcl}
+\delta x &=& \delta x_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta x}} \\
+\delta y &=& \delta y_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta y}} \\
+\delta \theta &=& \delta \theta_{\text{measured}} \pm \hat{\sigma}_{\overline{\delta \theta}}
+\end{array}
+\label{mean-angular-deviation}
+\end{equation}
 \item The accuracy of the position marker measurement due to unresolved LED center resolution should be within 1-2 mm.
 \end{itemize}
 

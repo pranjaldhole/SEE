@@ -22,24 +22,60 @@ Fig. \ref{schematic-convention} defines the signs and conventions used for follo
 	\item (X1, Y1, $\theta$1) : Final position and orientation of robot frame after the trail in world co-ordinate frame
 \end{itemize}
 
+\par On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. $Xr$ is perpendicular to the axle and points in the direction of robot's forward motion. \newline
+\par Observing the geometrical structure, it is easy to conclude that position $(X, Y)$ of the robot is geometric mean of positions of wheels. 
+\vspace{0.5cm}\\
 
-
-\par On real robot, origin of robot co-ordinate frame coincides with the center of axle of the wheels. Xr is perpendicular to the axle and points in the direction of robot's forward motion. \newline
-\par Observing the geometrical structure, it is easy to conclude that position (X, Y) of the robot is geometric mean of positions of wheels. 
-
-\par
 \textbf{Parameters used in experiments}
 \begin{itemize}
 	\item commanded speed for wheel ($v$) = 18 cm/sec
 	\item time ($t$) = 2250 milliseconds
-	\item turn rate ($t_r$) = 40 
+	\item turn rate ($t_r$) = 40 ($t_r$ specifies the sharpness of the turn.)
+	\item Ratio between inner and outer wheel speeds is given by,
+	\begin{equation}
+	r_{io} = \frac{100 - t_r}{100}
+	\end{equation}
+	\item The relation between inner and outer wheel speeds is given by,
+	\begin{equation}
+	v_i = t_r \cdot v_o
+	\end{equation}
+	where,
+	\begin{itemize}
+	\item linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s.
+	\item linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s.
+	\end{itemize}
+	\item Distance of inner wheel from center of rotation ($r_i$) in cm 
+	\item rotational speed of center of the axle of wheels = $\omega$ rad/s.
 	\item distance between wheels (track width $t_w$) = 14.5 cm 
 	\item initial position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 cm, 20.6 cm) 
 	\item initial position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 cm, 35.1 cm)
 	\item initial pose of robot (X, Y, $\theta$) = (0.0 cm, 27.85 cm, 0.0 rad)
 \end{itemize}
-\par Orientation of the robot ($\theta$) can be calculated using individual wheel positions with help of following formula. 
-$$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
+
+\textbf{Systematic error}\\
+\begin{itemize}
+\item The error in wheel diameter can be defined as ratio between two wheel diameters defined in Eq. \ref{wheel-error},
+\begin{equation}
+E_D = \frac{D_R}{D_L} = 1.0
+\end{equation}
+
+\item The error in wheelbase is computed from Eq. \ref{track-width-error},
+\begin{equation}
+E_B = \frac{b_{\text{actual}}}{b_{\text{assumed}}} = \frac{11.4}{18.6} = 0.78
+\end{equation}
+\end{itemize}
+\textbf{Analytical derivations}
+\par Angular pose of the robot ($\theta$) can be calculated using individual wheel positions with help of following formula:
+\begin{equation}
+\theta = \left[ tan^{-1}\left(\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}}\right) - \frac{\pi}{2} \right] \cdot \frac{180}{\pi} \qquad\qquad \text{(in degrees)}
+\label{theta-orientation}
+\end{equation}
+For right and left turn motion, we compute the angular pose as follows:
+\begin{equation}
+\theta_r/ \theta_l = \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right)
+\label{lr-ang-pose}
+\end{equation}
+where $s$ is straight-line displacement between the initial and final pose and $r$ is radius of the circle on which the robot traverses (refer to Eq. \ref{radius-circle}).
 \begin{enumerate}
 \item \textbf{Straight motion}
 
@@ -57,40 +93,34 @@ $$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 		= (0.0 + 40.5 cm, 35.1 cm)\\
 		= (40.5 cm, 35.1 cm)
 	
-		\item expected position of robot ($X$, $Y$, $\theta$) = (0.0 + 40.5 cm, 27.85 cm, 0.0 rad) = (40.5 cm, 27.85 cm, 0.0 rad)
+		\item expected position of robot $(X, Y, \theta) = (0.0 + 40.5 \text{ cm}, 27.85 \text{ cm}, 0.0^{\circ}) = (40.5 \text{ cm}, 27.85 \text{ cm}, 0.0^{\circ})$
+\end{itemize}
 	
-	
-	
-	
-	\end{itemize}
-	
-	\textbf{Observed motion}:
-	\begin{itemize}
-		\item mean distance traveled by right wheel in x-direction = 40.5 cm
+\textbf{Observed motion}:
+\begin{itemize}
+\item mean distance traveled by right wheel in x-direction = 40.5 cm
 		
-		\item mean distance traveled by left wheel in x-direction = 40.3 cm 
+\item mean distance traveled by left wheel in x-direction = 40.3 cm 
 		
-		\item mean distance traveled by right wheel in y-direction = 0.1 cm 
+\item mean distance traveled by right wheel in y-direction = 0.1 cm 
 		
-		\item mean distance traveled by left wheel in y-direction = 0.1 cm 
-		
-		
-	\end{itemize}
+\item mean distance traveled by left wheel in y-direction = 0.1 cm 
 
+\end{itemize}
+
+The observed final pose is given as,
+\begin{equation}
+\begin{array}{rcl}
+x_r &=& 40.4 \text{ cm} \\
+y_r &=& 27.9 \text{ cm} \\
+\theta_r &=& tan^{-1}\cfrac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi} = 0.6^{\circ} \qquad \text{(Using Eq. \ref{theta-orientation})}
+\end{array}
+\end{equation}
 
 
 	
 \item \textbf{Right Turn} \\
-	\textbf{Parameters set in API}: \newline
-	commanded speed = 18 cm/sec \newline
-	time = 2250 milliseconds \newline
-	
-		
-	Distance of inner wheel from center of rotation ($r_i$) in cm \\ 
-	rotational speed of center of the axle of wheels = $\omega$ rad/s \newline
-	linear speed of inner wheel ($v_i$) = $r_i * \omega$ cm/s \newline
-	linear speed of outer wheel ($v_o$) = $(r_i + t_w ) * \omega$ cm/s \newline
-	
+The angular velocity is computed as follows:
 	\begin{equation}
 	\omega = \cfrac{r_i \cdot \cfrac{t_r}{100}}{t_w} = \frac{18 * 0.4}{14.5} = 0.5 \text{ rad/sec}
 	\end{equation}
@@ -98,6 +128,7 @@ $$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 	The radius of the circle is given by,
 	\begin{equation}
 	r_i = \cfrac{v_o \cdot \cfrac{100 - t_r}{100}}{\omega} = 21.8 \text{ cm}
+	\label{radius-circle}
 	\end{equation}
 	
 	The final pose is computed as,
@@ -105,7 +136,7 @@ $$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 	\begin{array}{rcl}
 	x_r &=& 35.5 \text{ cm} \\
 	y_r &=& 5.6 \text{ cm} \\
-	\theta_r &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.4^{\circ}
+	\theta_r &=& 89.4^{\circ} \qquad \text{(Using Eq. \ref{lr-ang-pose})}
 	\end{array}
 	\end{equation}
 	
@@ -131,7 +162,7 @@ $$\theta = tan^{-1}\frac{Y_{ri} - Y_{le}}{X_{ri} - X_{le}} - 0.5\cdot{\pi}$$
 	\begin{array}{rcl}
 	x_l &=& 35.5 \text{ cm} \\
 	y_l &=& 105.8 \text{ cm} \\
-	\theta_l &=& \cos^{-1}\left(\frac{2r^2 - s^2}{r^2}\right) = 89.5^{\circ}
+	\theta_l &=& 89.5^{\circ} \qquad \text{(Using Eq. \ref{lr-ang-pose})}
 	\end{array}
 	\end{equation}
 		
@@ -216,7 +247,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 		uncertainty in pose (y) cm & $(0.9 \pm 0.3)$ & $(0.8 \pm 0.3)$ & $(0.9 \pm 0.2)$ & $(0.9 \pm 0.5)$ & $(0.4 \pm 0.5)$ & $(0.2 \pm 0.5)$ \\
 		\hline
 	\end{tabular}
-	\caption{Statistical summary of observed robot motion}
+	\caption{Statistical summary of observed robot motion. Refer to Eq. \ref{mean-deviation}, \ref{standard-deviation}, \ref{mean-angular-deviation}.}
 	\label{stats}
 \end{table}
 There are three type of uncertainties which we estimated which can occur in the measurement. 
