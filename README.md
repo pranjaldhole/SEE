@@ -24,3 +24,7 @@ Exercises for Scientific Experimentation and Evaluation course
 
 #### Note
 For showing the update on feedback, use ``\update{text}`` in latex.
+
+## Calibrating an Optical Tracking System
+### Assignments
++ [Exercise 1: Calibrating an Optical Tracking System](optical_tracking_system/hw1.tex)
