@@ -23,7 +23,15 @@ Test the provided camera on your laptop and ensure you can capture still images.
 \item The provided camera is then used to take images of this checker board from multiple perspectives.
 \item The poses for each image captured can be found in fig. \ref{fig:poses}.
 \end{itemize}
-\subsubsection*{Mathematical background}
+
+\subsection*{2. An estimation of the number of images and image positions required}
+\begin{itemize}
+\item The \texttt{Camera Calibrator} in \texttt{MatLab} required at least 3 images for calibration.
+\item It is recommended that we use at least 10-20 images for calibration so that the optimization function can converge efficiently.
+\item We used 51 images. This introduces a lot of redundancy however it enables us to attain higher calibration accuracy.
+\end{itemize}
+
+\subsection*{3. A description of the parameters (what do they mean?) calculated by the Matlab calibration toolbox}
 The standard camera model calibration algorithm assumes a pinhole camera model:
 \begin{equation}
 w \begin{bmatrix} x & y & 1 \end{bmatrix} = \begin{bmatrix} X & Y & Z & 1 \end{bmatrix} \begin{bmatrix} R \\ t \end{bmatrix} K
@@ -54,14 +62,14 @@ c_x & c_y & 1
 \item $t$ represents the translation of the camera relative to the world coordinate system.
 \end{itemize}
 
-\subsection*{2. An estimation of the number of images and image positions required}
+\subsection*{4. Discuss possible problems or error sources that can disturb the calibration process. Include any observation you may have made while testing the proper functioning of the camera with your laptop}
 \begin{itemize}
-\item The \texttt{Camera Calibrator} in \texttt{MatLab} required at least 3 images for calibration.
-\item It is recommended that we use at least 10-20 images for calibration so that the optimization function can converge efficiently.
-\item We used 51 images. This introduces a lot of redundancy however it enables us to attain higher calibration accuracy.
+\item We observed that unsteady setup could introduce blur in the image. Such images are bad examples to use for calibration procedure.
+\item Some devices, like the provided camera, came with built-in auto-focussing function. This is undesirable since auto-focussing changes the focal length of the lens. We cannot use pin-hole camera model for cameras with variable focal length.
 \end{itemize}
 
-\subsection*{3. A description of the parameters (what do they mean?) calculated by the Matlab calibration toolbox}
+\section*{3. Assignment 3.2}
+\subsection*{Perform the camera calibration experiment designed in assignment 3.1. Document all relevant aspects needed to assess the quality of your obtained camera parameters.}
 \begin{itemize}
 \item The intrinsic camera matrix was evaluated to be:
 \begin{equation}
@@ -85,26 +93,10 @@ K = 10^3\begin{bmatrix}
 \end{equation}
 \end{itemize}
 
-\subsection*{4. Discuss possible problems or error sources that can disturb the calibration process. Include any observation you may have made while testing the proper functioning of the camera with your laptop}
-\begin{itemize}
-\item We observed that unsteady setup could introduce blur in the image. Such images are bad examples to use for calibration procedure.
-\item Some devices, like the provided camera, came with built-in auto-focussing function. This is undesirable since auto-focussing changes the focal length of the lens. We cannot use pin-hole camera model for cameras with variable focal length.
-\end{itemize}
-
-\section*{3. Assignment 3.2}
-\subsection*{Perform the camera calibration experiment designed in assignment 3.1. Document all relevant aspects needed to assess the quality of your obtained camera parameters.}
-
 \section*{4. Deliverables 3.2}
 \textbf{Write a report describing the calibration process, including a theoretical part that describes the camera and lens errors measured and corrected by the calibration:}
 \subsection*{1. Describe the images poses used for calibration and report the found camera parameters including any error estimates (where applicable)}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{graphics/worst.png}
-\caption{Calibrated image with the highest amount of pixel error}
-\label{fig:worst-calibrated-image}
-\end{center}
-\end{figure}
-
+The various image poses estimated via the calibration procedure is shown in fig. \ref{fig:poses}.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{graphics/camera_positions.png}
@@ -113,14 +105,40 @@ K = 10^3\begin{bmatrix}
 \end{center}
 \end{figure}
 
+The example of the worst reprojection error is shown in fig. \ref{fig:worst-calibrated-image}.
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{graphics/stats.png}
+\includegraphics[width=0.7\textwidth]{graphics/worst.png}
+\caption{Calibrated image with the highest amount of pixel error}
+\label{fig:worst-calibrated-image}
+\end{center}
+\end{figure}
+\begin{itemize}
+\item We notice that the pixel at the bottom-right has the worst reprojection error.
+\item This is due to barrel distortion which are slightly inaccurately corrected.
+\item The reason for bad distortion calibration is due to the fact that our calibration image set does not include images in which the angle between optical axis of camera and checker board is very high.
+\end{itemize}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{graphics/stats.png}
 \caption{Mean error in Pixels for each image.}
 \label{fig:stats}
 \end{center}
 \end{figure}
-\subsection*{2. Provide arguments for which camera model best fits your situation and hence should be used}
 
-\subsection*{3. Discuss possible problems or error sources that can disturb the calibration process}
+\begin{itemize}
+\item The mean error (in pixels) per image is shown in fig. \ref{fig:stats}.
+\item We notice that the overall mean error is 0.65 pixels which is in sub-pixel regime.
+\end{itemize}
+\subsection*{2. Provide arguments for which camera model best fits your situation and hence should be used.}
+\begin{itemize}
+\item For our purpose, after disabling auto-focussing, the pin-hole camera model fits our situation best.
+\end{itemize}
+
+\subsection*{3. Discuss possible problems or error sources that can disturb the calibration process.}
+\begin{itemize}
+\item If the calibration images set does not contain diverse enough poses of checker board with respect to camera, we would have higher calibration error.
+\item Low brightness setting for experiment that makes detection of checker board intersections harder would also result in low accuracy in calibration.
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
