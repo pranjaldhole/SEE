@@ -3,7 +3,7 @@
 Test the provided camera on your laptop and ensure you can capture still images.}
 
 \begin{itemize}
-\item We used VLC player as a tool to capture images since we can disable the auto-focussing function that is in-built in the camera with VLC player. This is required since auto-focussing changes the focal length of the lens changes.
+\item We used VLC player as a tool to capture images since we can disable the auto-focussing function that is in-built in the camera with VLC player. This is required since auto-focussing changes the focal length of the lens changes. Resolution of images taken is 1280 x 800.
 \end{itemize}
 
 \section*{2. Deliverables 3.1}
@@ -19,8 +19,7 @@ Test the provided camera on your laptop and ensure you can capture still images.
 \end{figure}
 \begin{itemize}
 \item As shown in fig. \ref{fig:sample}, we place the checker board on the ground.
-\item The checker board must not be square
-\item The checker board must be kept in focus without using AF
+\item The checker board must not be square.
 \item The size of the checker board was measured to be $72$ mm.
 \item The provided camera is then used to take images of this checker board from multiple perspectives.
 \item The poses for each image captured can be found in fig. \ref{fig:poses}.
@@ -222,15 +221,22 @@ The example of the worst reprojection error is shown in fig. \ref{fig:worst-cali
 \subsection*{2. Provide arguments for which camera model best fits your situation and hence should be used.}
 \begin{itemize}
 \item For our purpose, after disabling auto-focussing, the pin-hole camera model fits our situation best.
-\item Pin hole cameras have an extremely tiny aperture and therefore a very wide depth of field
+\item Pin hole cameras have an extremely tiny aperture and therefore a very wide depth of field. Given the task of pose estimation, wide depth of field is necessary as we can estimate the pose of the object placed at wide range of depth with allowable error.
+\item Barrel and pin cushion distortion model is used because it is the most common lens distortion model found in nearly-thin lenses. It allows us to estimate the pose of object placed at wide angle.
+\item Mono-chromatic distortion (individual distortion associated with each wavelength) is not considered while calibrating as we will use only gray-scale image.    
 \end{itemize}
 
 \subsection*{3. Discuss possible problems or error sources that can disturb the calibration process.}
 \begin{itemize}
 \item If the calibration images set does not contain diverse enough poses of checker board with respect to camera, we would have higher calibration error.
 \item Low brightness setting for experiment that makes detection of checker board intersections harder would also result in low accuracy in calibration.
-\item  bad focus can also be the source or errors
+\item Bad focus can also be the source or errors.
 \item Lens distortion is another source of error which has been elaborated further up.
+\item Inaccurate measurement of checkerboard side can lead to considerable error which might force us to recalibrate the camera. 
+\item Uneven surface of the checkerboard (due to air bubbles) is also a source of error. 
+\item Corner estimation, due to above mentioned reasons along with human error can lead to possible error in calibration, but this error will be small because of quantity of images used. 
+\item Calibrating camera with lower resolution images can lead to errors if the same results are used to process higher resolution images. 
+   
 \end{itemize}
 
 
