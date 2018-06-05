@@ -64,15 +64,80 @@ c_x & c_y & 1
 \item $t$ represents the translation of the camera relative to the world coordinate system.
 \end{itemize}
 
+
+\newpage
+\textbf{Distortions:}
+
+
+Because lenses refract light in several cascaded lenses, distortion happens as it is shown in Figure \ref{fig:calibrationradialdistortion}. 
+In order to counteract distortion Matlab's camera model can be extended with radial distortion coefficients, which are defined as follows:
+
+\begin{equation}
+x_{r\_distorted} = x(1 + k_1*r^2 + k_2*r^4 + k_3*r^6
+\end{equation}
+\begin{equation}
+y_{r\_distorted} = y(1 + k_1*r^2 + k_2*r^4 + k_3*r^6)
+\end{equation}
+
+with:
+
+x,y = coordinates of undistorted pixels
+
+k = Radial distortion coefficients of the lens
+
+$r^n = x^n + y^n$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{graphics/calibration_radial_distortion}
+	\caption[]{Types of distortion}
+	
+	\label{fig:calibrationradialdistortion}
+\end{figure}
+
+
+
+Since the calibration board and the camera are usually not precisely aligned some tangential distortion is introduced. This is depicted in \ref{fig:calibrationtangentialdistortion}. In the left half there is an example of a properly aligned setup, while a not aligned setup is shown on the right side.
+
+\begin{equation}
+x_{t\_distorted} = x + [2 * p_1 * x * y + p_2 * (r^2 + 2 * x^2)]
+\end{equation}
+\begin{equation}
+yt_{t\_distorted} = y + [p_1 * (r^2 + 2 *y^2) + 2 * p_2 * x * y]
+\end{equation}
+
+
+with:
+
+x,y = coordinates of undistorted pixels
+
+k = Radial distortion coefficients of the lens
+
+$r^n = x^n + y^n$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{graphics/calibration_tangentialdistortion}
+	\caption{Tangential distortion}
+	\label{fig:calibrationtangentialdistortion}
+\end{figure}
+
+
 \subsection*{4. Discuss possible problems or error sources that can disturb the calibration process. Include any observation you may have made while testing the proper functioning of the camera with your laptop}
 \begin{itemize}
 \item We observed that unsteady setup could introduce blur in the image. Such images are bad examples to use for calibration procedure.
 \item Some devices, like the provided camera, came with built-in auto-focussing function. This is undesirable since auto-focussing changes the focal length of the lens. We cannot use pin-hole camera model for cameras with variable focal length.
 \end{itemize}
 
+
+
 \section*{3. Assignment 3.2}
 \subsection*{Perform the camera calibration experiment designed in assignment 3.1. Document all relevant aspects needed to assess the quality of your obtained camera parameters.}
+
+	
+
 \begin{itemize}
+	
 \item The intrinsic camera matrix was evaluated to be:
 \begin{equation}
 K = 10^3\begin{bmatrix}
@@ -131,17 +196,28 @@ The example of the worst reprojection error is shown in fig. \ref{fig:worst-cali
 \item The reason for bad distortion calibration is due to the fact that our calibration image set does not include images in which the angle between optical axis of camera and checker board is very high.
 \end{itemize}
 
+
+
 \begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth]{graphics/stats.png}
-\caption{Mean reprojection error in Pixels for each image.}
-\label{fig:stats}
-\end{center}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{graphics/stats.png}
+		\caption{Mean reprojection error in Pixels for each image.}
+		\label{fig:stats}
+	\end{subfigure}
+	\qquad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{graphics/stats_improved.png}
+		\caption{Mean reprojection error in Pixels for each image after deleting the outliers.}
+		\label{fig:statsimproved}
+	\end{subfigure}
 \end{figure}
 
+
 \begin{itemize}
-\item The mean error (in pixels) per image is shown in fig. \ref{fig:stats}.
-\item We notice that the overall mean error is 0.65 pixels which is in sub-pixel regime.
+\item The mean error (in pixels) per intersection is shown in fig. \ref{fig:stats}.
+\item We notice that the mean deviation from the target intersection point is 0.65 pixels which is in sub-pixel regime.
+\item After deleting images 11, 45, 46 and 51 which had high reprojection error as shown in fig. \ref{fig:statsimproved}, we observe that mean error (in pixels) per intersection is 0.58 pixels.
 \end{itemize}
 \subsection*{2. Provide arguments for which camera model best fits your situation and hence should be used.}
 \begin{itemize}
@@ -154,33 +230,8 @@ The example of the worst reprojection error is shown in fig. \ref{fig:worst-cali
 \item If the calibration images set does not contain diverse enough poses of checker board with respect to camera, we would have higher calibration error.
 \item Low brightness setting for experiment that makes detection of checker board intersections harder would also result in low accuracy in calibration.
 \item  bad focus can also be the source or errors
-\item Lens distrotion is another source of error and will be elaborted in the following
+\item Lens distortion is another source of error which has been elaborated further up.
 \end{itemize}
-
-Because lenses refracture light, distortin happens as it is shown in Figure \ref{fig:calibrationradialdistortion}. 
-In order to counteract distrotion matlabs camera model can be extended with radial distortion coefficients, which are defined like:
-
-
-$xdistorted = x(1 + k_1*r^2 + k_2*r^4 + k_3*r^6)$
-
-$ydistorted= y(1 + k_1*r^2 + k_2*r^4 + k_3*r^6) $
-
-
-with:
-
-x,y = coordinates of undistorted pixels
-
-k = Radial distortion coefficients of the lens
-
-$r^n = x^n + y^n$
-
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{graphics/calibration_radial_distortion}
-	\caption[]{Types of distortion}
- 
-	\label{fig:calibrationradialdistortion}
-\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
