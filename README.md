@@ -28,3 +28,7 @@ For showing the update on feedback, use ``\update{text}`` in latex.
 ## Calibrating an Optical Tracking System
 ### Assignments
 + [Exercise 1: Calibrating an Optical Tracking System](optical_tracking_system/hw1.tex)
+
+##Message for satya nadella and bill gates 
+
+If U are reading this message, Get the fuck out of our private repo and fuck urself
