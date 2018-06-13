@@ -24,6 +24,12 @@
 \usepackage{afterpage}
 \usepackage[makeroom]{cancel}
 
+% Start chapter on same page
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -35,14 +41,14 @@
 \usepackage{todonotes}
 
 \fancyhead{}
-\fancyhead[RE, LO]{{\nouppercase{\rightmark{Dhole, Mensing, Padalkar}}}}
+\fancyhead[RE, LO]{{\nouppercase{\leftmark}}}
 \fancyhead[LE, RO]{\thepage}
 \setlength{\headheight}{15pt}
 \renewcommand{\headrulewidth}{0.4pt}
 
 \fancyfoot{}
-\fancyfoot[RE, LO]{{\nouppercase{\leftmark{MAS-SS18 | Hochschule Bonn-Rhein-Sieg}}}}
-\fancyfoot[LE, RO]{Date: 07.06.2018}
+\fancyfoot[RE, LO]{{\nouppercase{{MAS-SS18 | Hochschule Bonn-Rhein-Sieg}}}}
+\fancyfoot[LE, RO]{Dhole, Mensing, Padalkar}
 \renewcommand{\footrulewidth}{0.4pt}
 
 \hypersetup{
@@ -78,9 +84,10 @@
 \section*{\underline{Scientific Experimentation and Evaluation}}
 \large{\underline{Calibrating an Optical Tracking System}}\\
 \large{Abhishek Padalkar, Max Mensing, Pranjal Dhole}\\
-\large{Next submission: Thursday, 7$^{\text{th}}$ June, 2018}
+\large{Next submission: Thursday, 14$^{\text{th}}$ June, 2018}
 \end{center}
 
 \input{hw1}
+\input{hw2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
