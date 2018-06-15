@@ -3,23 +3,23 @@ import numpy as np
 from pprint import pprint
 
 savename = (sys.argv[1])
-
+xmeans =[]
+ymeans =[]
+tmeans =[]
 y = np.array([np.zeros(150)])
+
 directory=os.popen("find ./  -printf \"%f\n\"| grep recording")
+
 for filename in directory.readlines():
     print("Processing "+filename)
-    #time.sleep(3)
 
     file = ""+filename+""
     f = os.popen("cat "+filename+"")
     x = np.array([])
     for i in f.readlines():
         if '.' in i:
-            #print i
             i = re.sub(',', '', i)
-            #i = np.array
             i = round(float(i),2)
-            #print i
             x = np.append(x, i)
         else:
             pass
@@ -39,11 +39,6 @@ for i in range(0,150):
         t_list = np.append(t_list,i+2)
     i +=1
 
-xmeans =[]
-ymeans =[]
-tmeans =[]
-
-
 for j in range(0,y.shape[0]):
     z = y[j,:]
     xtotal = 0
@@ -61,14 +56,11 @@ for j in range(0,y.shape[0]):
     xmean = xtotal / 50
     ymean = ytotal / 50
     tmean = ttotal / 50
-
     xmeans = np.append(xmeans, xmean)
     ymeans = np.append(ymeans, ymean)
     tmeans = np.append(tmeans, tmean)
 
-
 all_means = np.vstack([xmeans,ymeans])
 all_means =  np.vstack([all_means,tmeans])
 
-#print(all_means)
 np.savetxt(savename+".csv", all_means, delimiter=";", fmt='%f')
