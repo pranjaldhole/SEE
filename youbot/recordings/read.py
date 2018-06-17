@@ -65,4 +65,4 @@ for j in range(0,y.shape[0]):
 
 all_means =  np.hstack((xmeans, ymeans, tmeans))
 
-np.savetxt(csv_path+savename+".csv", all_means, header='x_means, y_means, theta_means', delimiter=";", fmt='%f')
+np.savetxt(csv_path+savename+".csv", all_means, header='x_means, y_means, theta_means', delimiter=",", fmt='%f')
