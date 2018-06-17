@@ -2,10 +2,13 @@ import zmq, json, simplejson, re, time, os, sys
 import numpy as np
 from pprint import pprint
 
+csv_path = '../../CSVs/'
+
 savename = (sys.argv[1])
-xmeans =[]
-ymeans =[]
-tmeans =[]
+
+xmeans = np.empty((20,1))
+ymeans = np.empty((20,1))
+tmeans = np.empty((20,1))
 y = np.array([np.zeros(150)])
 
 directory=os.popen("find ./  -printf \"%f\n\"| grep recording")
@@ -56,11 +59,10 @@ for j in range(0,y.shape[0]):
     xmean = xtotal / 50
     ymean = ytotal / 50
     tmean = ttotal / 50
-    xmeans = np.append(xmeans, xmean)
-    ymeans = np.append(ymeans, ymean)
-    tmeans = np.append(tmeans, tmean)
+    xmeans[j] = xmean
+    ymeans[j] = ymean
+    tmeans[j] = tmean
 
-all_means = np.vstack([xmeans,ymeans])
-all_means =  np.vstack([all_means,tmeans])
+all_means =  np.hstack((xmeans, ymeans, tmeans))
 
-np.savetxt(savename+".csv", all_means, delimiter=";", fmt='%f')
+np.savetxt(csv_path+savename+".csv", all_means, header='x_means, y_means, theta_means', delimiter=";", fmt='%f')
