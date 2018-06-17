@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper,openright,twoside]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[inner=1cm,outer=1cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{epstopdf}
+\usepackage[singlespacing]{setspace}
+\usepackage{tabularx}
+\usepackage{mathrsfs}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fancyref}
+\usepackage{subcaption}
+\usepackage{braket}
+\usepackage{color}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage[pagebackref]{hyperref}
+\usepackage{afterpage}
+\usepackage[makeroom]{cancel}
+
+% Start chapter on same page
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\graphicspath{{images/}}
+
+\usepackage{todonotes}
+
+\fancyhead{}
+\fancyhead[RE, LO]{{\nouppercase{\leftmark}}}
+\fancyhead[LE, RO]{\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\fancyfoot{}
+\fancyfoot[RE, LO]{{\nouppercase{{MAS-SS18 | Hochschule Bonn-Rhein-Sieg}}}}
+\fancyfoot[LE, RO]{Dhole, Mensing, Padalkar}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Scientific Experimentation and Evaluation Homework},    % title
+    pdfauthor={Pranjal Dhole},     % author
+    pdfsubject={Review},   % subject of the document
+    pdfcreator={Pranjal Dhole},   % creator of the document
+    pdfproducer={Pranjal Dhole}, % producer of the document
+    pdfkeywords={SEEHomework} {Scientific Experimentation and Evaluation}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=MidnightBlue, % color of internal links (change box color with linkbordercolor)
+    citecolor=Thistle,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=Sepia           % color of external links
+}
+
+\newcommand{\sectionLine}{\begin{center}\line(1,0){500}\end{center}}
+\definecolor{darkgreen}{RGB}{10, 127, 10}
+\newcommand{\update}[1]{{\color{darkgreen}{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%specific
+\raggedbottom
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\section*{\underline{Scientific Experimentation and Evaluation}}
+\large{\textbf{Measuring the Accuracy and Precision of a KUKA youBot Arm}}\\
+\large{Abhishek Padalkar, Max Mensing, Pranjal Dhole}\\
+\large{Next submission: Thursday, 21$^{\text{st}}$ June, 2018}
+\end{center}
+
+\input{hw1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
