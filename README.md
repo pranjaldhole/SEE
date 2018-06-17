@@ -2,7 +2,7 @@
 Exercises for Scientific Experimentation and Evaluation course
 
 ## Robot Motion Model
-### Assignments
+### Reports
 + [Exercise 1: Manual Motion Observation - Experiment Design](robot_motion_model/hw1.tex)
 + [Exercise 2: Manual Motion Observation - Robot motion Experiment](robot_motion_model/hw2.tex)
 + [Exercise 3: Manual Motion Observation - Statistical Analysis](robot_motion_model/hw3.tex)
@@ -21,13 +21,14 @@ Exercises for Scientific Experimentation and Evaluation course
 For showing the update on feedback, use ``\update{text}`` in latex.
 
 ## Calibrating an Optical Tracking System
-### Assignments
+### Reports
 + [Exercise 1: Calibrating an Optical Tracking System](optical_tracking_system/hw1.tex)
 ### Todo
 #### Feedback received on 2018-06-07
 + [ ] Insert the uncertainty in camera parameters.
 
 ## YouBot placement Experiment
+### Reports
 + [Deliverables 6.1: Visualization of data](youbot/hw1.tex)
-## Calculations and Visualization
+### Calculations and Visualization
 + [Jupyter notebook](youbot/SEEHomework_AbhishekPadalkar_MaxMensing_PranjalDhole_youbot.ipynb)
