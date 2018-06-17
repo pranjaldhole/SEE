@@ -339,3 +339,14 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+# duplicate python files
+youbot/recordings/big/left/read.py
+youbot/recordings/big/right/read.py
+youbot/recordings/big/straight/read.py
+youbot/recordings/medium/left/read.py
+youbot/recordings/medium/right/read.py
+youbot/recordings/medium/straight/read.py
+youbot/recordings/small/left/read.py
+youbot/recordings/small/right/read.py
+youbot/recordings/small/straight/read.py
