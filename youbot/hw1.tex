@@ -14,6 +14,9 @@
 		\item 2) Grab the object using the arm
 		\item 3) Move the object to one of the 3 positions using the arm
 	\end{itemize}
+	\item The measurements were recorded in a file for each measurement. Each file contained 50 JSON objects which were seperated by lines counting the mesurements
+	\item In order to extract the poses from this a python program was written to create clean CSV files which contain only the poses
+	\item Sorting of the files is handled by a bash script 
 \end{itemize}
 
 
@@ -41,7 +44,7 @@
 
 \subsection{The saved preprocessed data as Excel or LibreOffice Calc file or in a similar machine-readable form}
 
-
+Those recordings have been saved in CSV files for each of the 3 experiments. They can be found in: recordings/CSVs
 
 \subsection{A visualization of the obtained final object poses. You are free to use any suitable visual representation for the data (using what you have already learned during the LEGO experiment). Hint: Given the different object-place combinations in the experiment, think about what we might want to illustrate with the visualization (e.g. the distribution of poses per object? the distribution of poses per motion direction? the distribution of all poses?)}
 
