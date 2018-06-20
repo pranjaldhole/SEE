@@ -31,6 +31,16 @@ wheels/
 *.manifest
 *.spec
 
+
+
+#libreoffice lock files
+*.*lock*.ods*
+*.*lock*.doc*
+*.*lock*.csv*
+
+
+
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
