@@ -25,10 +25,13 @@ For showing the update on feedback, use ``\update{text}`` in latex.
 + [Exercise 1: Calibrating an Optical Tracking System](optical_tracking_system/hw1.tex)
 ### Todo
 #### Feedback received on 2018-06-07
-+ [ ] Insert the uncertainty in camera parameters.
++ [x] Insert the uncertainty in camera parameters.
 
 ## YouBot placement Experiment
 ### Reports
 + [Deliverables 6.1: Visualization of data](youbot/hw1.tex)
 ### Calculations and Visualization
 + [Jupyter notebook](youbot/SEEHomework_AbhishekPadalkar_MaxMensing_PranjalDhole_youbot.ipynb)
+### Todo
+#### Feedback received on 2018-06-21
++ [x] Which arm : 3
