@@ -6,12 +6,13 @@ csv_path = '../../CSVs/'
 
 savename = (sys.argv[1])
 
-xmeans = np.empty((20,1))
-ymeans = np.empty((20,1))
-tmeans = np.empty((20,1))
+xmeans = np.empty((40,1))
+ymeans = np.empty((40,1))
+tmeans = np.empty((40,1))
 y = np.array([np.zeros(150)])
 
-directory=os.popen("find ./  -printf \"%f\n\"| grep recording")
+#directory=os.popen("find ./  -printf \"%f\n\"| grep recording")
+directory=os.popen("find ./  -printf \"%f\n\"| grep .txt")
 
 for filename in directory.readlines():
     print("Processing "+filename)
@@ -64,5 +65,5 @@ for j in range(0,y.shape[0]):
     tmeans[j] = tmean
 
 all_means =  np.hstack((xmeans, ymeans, tmeans))
-
+print(all_means)
 np.savetxt(csv_path+savename+".csv", all_means, header='x_means, y_means, theta_means', delimiter=",", fmt='%f')
