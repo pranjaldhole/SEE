@@ -12,7 +12,8 @@ We were not asked to rerun the experiment.
 
 \subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
 
-
+%initial_pose = np.array([-79.27, -99.87, -1.62])
+%target_straight = np.array([-79.40, -87.48, -1.72])
 \newpage
 \thispagestyle{empty}
 {\footnotesize 
@@ -22,6 +23,9 @@ We were not asked to rerun the experiment.
 		\hline
 		                                                       &                  \multicolumn{3}{c|}{left}                   &               \multicolumn{3}{c|}{straight}               &                \multicolumn{3}{c|}{right}                 \\ \hline
 		Our collected data                                     & big                & med                & small              & big               & med               & small             & big               & med               & small             \\ \hline
+		target Pose $x$ cm       & -79.4& -79.4&-79.4 & -79.40 &-79.40 &-79.40 & -41.73 &-41.73 &-41.73 \\ 
+		target Pose $y$ cm       & -99.87& -99.87&-99.87 & -87.48 &-87.48 &-87.48 & -88.63 & -88.63&-88.63 \\ 
+		target Pose $\theta$ rad       & -1.62& -1.62& -1.62& -1.72 & -1.72& -1.72 & -0.92 &  -0.92& -0.92 \\ \hline
 		uncertainty in pose $(\delta x \pm \sigma_x)$ cm       & $(-107.0 \pm 0.7)$ & $(-107.7 \pm 1.0)$ & $(-112.5 \pm 0.8)$ & $(-76.9 \pm 0.5)$ & $(-77.9 \pm 0.5)$ & $(-80.8 \pm 0.8)$ & $(-40.3 \pm 0.4)$ & $(-42.2 \pm 0.4)$ & $(-46.3 \pm 0.7)$ \\
 		uncertainty in pose $(\delta y \pm \sigma_y)$ cm       & $(-99.5 \pm 0.6)$  & $(-100.9 \pm 0.8)$ & $(-106.1 \pm 0.7)$ & $(-84.4 \pm 0.4)$ & $(-86.0 \pm 0.4)$ & $(-89.4 \pm 0.7)$ & $(-87.1 \pm 0.8)$ & $(-89.5 \pm 0.6)$ & $(-94.3 \pm 1.0)$ \\
 		uncertainty in pose $(\delta \theta \pm \sigma_y)$ rad & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.1)$   & $(-1.6 \pm 0.1)$  & $(-1.6\pm 0.2)$   & $(-1.6 \pm 0.1)$  & $(-0.9 \pm 0.0)$  & $(-0.9 \pm 0.1)$  & $(-0.9 \pm 0.0)$  \\ \hline
