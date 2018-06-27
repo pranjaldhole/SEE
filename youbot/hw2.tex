@@ -12,6 +12,29 @@ We were not asked to rerun the experiment.
 
 \subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
 
+
+\newpage
+\thispagestyle{empty}
+{\footnotesize 
+\begin{adjustbox}{angle=90}
+	\centering
+	\begin{tabular}{| l | c | c | c | c |c |c |c | c | c |}
+		\hline
+		                                                       &                  \multicolumn{3}{c|}{left}                   &               \multicolumn{3}{c|}{straight}               &                \multicolumn{3}{c|}{right}                 \\ \hline
+		Our collected data                                     & big                & med                & small              & big               & med               & small             & big               & med               & small             \\ \hline
+		uncertainty in pose $(\delta x \pm \sigma_x)$ cm       & $(-107.0 \pm 0.7)$ & $(-107.7 \pm 1.0)$ & $(-112.5 \pm 0.8)$ & $(-76.9 \pm 0.5)$ & $(-77.9 \pm 0.5)$ & $(-80.8 \pm 0.8)$ & $(-40.3 \pm 0.4)$ & $(-42.2 \pm 0.4)$ & $(-46.3 \pm 0.7)$ \\
+		uncertainty in pose $(\delta y \pm \sigma_y)$ cm       & $(-99.5 \pm 0.6)$  & $(-100.9 \pm 0.8)$ & $(-106.1 \pm 0.7)$ & $(-84.4 \pm 0.4)$ & $(-86.0 \pm 0.4)$ & $(-89.4 \pm 0.7)$ & $(-87.1 \pm 0.8)$ & $(-89.5 \pm 0.6)$ & $(-94.3 \pm 1.0)$ \\
+		uncertainty in pose $(\delta \theta \pm \sigma_y)$ rad & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.1)$   & $(-1.6 \pm 0.1)$  & $(-1.6\pm 0.2)$   & $(-1.6 \pm 0.1)$  & $(-0.9 \pm 0.0)$  & $(-0.9 \pm 0.1)$  & $(-0.9 \pm 0.0)$  \\ \hline
+		Combined Data                                          &                    &                    &                    &                   &                   &                   &                   &                   &                   \\ \hline
+		uncertainty in pose $(\delta x \pm \sigma_x)$ cm       & $(-107.1 \pm 0.6)$ & $(-108.0 \pm 1.0)$ & $(-111.3 \pm 1.2)$ & $(-76.9 \pm 0.6)$ & $(-77.8 \pm 0.4)$ & $(-80.0 \pm 0.8)$ & $(-40.4 \pm 0.4)$ & $(-42.2 \pm 0.3)$ & $(-46.4 \pm 0.6)$ \\
+		uncertainty in pose $(\delta y \pm \sigma_y)$ cm       & $(-99.6 \pm 0.5)$  & $(-101.2 \pm 0.9)$ & $(-106.0 \pm 1.0)$ & $(-84.4 \pm 0.6)$ & $(-86.0 \pm 0.3)$ & $(-89.5 \pm 0.7)$ & $(-87.3 \pm 0.7)$ & $(-89.6 \pm 0.5)$ & $(-94.4 \pm 0.9)$ \\
+		uncertainty in pose $(\delta \theta \pm \sigma_y)$ rad & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.1)$   & $(-1.6 \pm 0.1)$  & $(-1.6 \pm 0.1)$  & $(-1.7 \pm 0.2)$  & $(-0.9 \pm 0.0)$  & $(-0.8 \pm 0.1)$  & $(-0.9 \pm 0.0)$  \\ \hline
+	\end{tabular}
+	%\caption{Statistical summary of observed robot motion. Refer to Eq. \ref{mean-deviation}, \ref{standard-deviation}, \ref{mean-angular-deviation}. \update{Measurement uncertainty}}
+	\label{stats}
+\end{adjustbox}}
+\newpage
+
 \subsubsection{If we are to use a single camera measurement for determining the final object pose instead of multiple filtered measurements, is the effect on the final pose estimates significant?}
 
 \subsection{Mention the list of used software and include the source of any functions you wrote for performing your analysis.}
