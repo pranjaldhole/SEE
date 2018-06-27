@@ -6,11 +6,28 @@
 We were not asked to rerun the experiment.
 
 \subsection{Find suitable statistical techniques for analyzing the experimental results (using what you’ve learned during the LEGO experiment) and answer the following questions:}
-\subsubsection{Knowing the ground-truth values of the expected final object poses, what is the accuracy of the arm? What about its precision?}
 
-\subsubsection{Does the distribution of the final object poses follow a Gaussian distribution?}
 
-\subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/combinedbig}
+	\caption{Results of the Big Load Placement Experiment}
+	\label{fig:combinedbig}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/combinedmedium}
+	\caption{Results of the Medium Load Placement Experiment}
+	\label{fig:combinedmedium}
+\end{figure}
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/combinedsmall}
+	\caption{Results of the Small Load Placement Experiment}
+	\label{fig:combinedsmall}
+\end{figure}
+
+
 
 %initial_pose = np.array([-79.27, -99.87, -1.62])
 %target_straight = np.array([-79.40, -87.48, -1.72])
@@ -39,7 +56,60 @@ We were not asked to rerun the experiment.
 \end{adjustbox}}
 \newpage
 
+\subsubsection{Knowing the ground-truth values of the expected final object poses, what is the accuracy of the arm? What about its precision?}
+By observing the data, we can conclude that the arm provided is not accurate because of the large target end-effector pose error. But it is precise as the repeatability is high. 
+  
+
+\subsubsection{Does the distribution of the final object poses follow a Gaussian distribution?}
+
+Yes, the distribution of the final poses follows a Gaussian distribution. 
+
+\subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
+
+By observing the observed poses for big and small objects, for 60 samples for the hypothesis "changing the shape and mass of an object affect the final placing pose", following results were obtained.
+
+\vspace{0.5cm}
+
+
+Error in hypothesis over observed data = 13
+\\
+Hence,
+\\
+$$error_{S}(h) = \frac{1}{n} \times 13 = 0.2166$$
+$$error_{S}(h) = \frac{1}{60} \times 13 = 0.2166$$
+
+hence with approximately 95 $\%$ probability,
+$error_{D}(h)$ lies in interval,
+
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
+
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.2166 \times (1 - 0.2166)}{60}} = \pm 0.0529$$
+
+Hence it can be concluded that above hypothesis holds true. 
+
+
+
 \subsubsection{If we are to use a single camera measurement for determining the final object pose instead of multiple filtered measurements, is the effect on the final pose estimates significant?}
+
+By observing the observed poses for big and small objects, for 60 samples for the hypothesis "Using single camera measurement does not affect the final object pose measurement", following results were obtained.
+
+\vspace{0.5cm}
+
+Error in hypothesis over observed data = 0
+\\
+Hence,
+\\
+$$error_{S}(h) = \frac{1}{60} \times 13 = 0.00$$
+
+hence with approximately 95 $\%$ probability,
+$error_{D}(h)$ lies in interval,
+
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
+
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.2166 \times (1 - 0.2166)}{60}} = \pm 0.00$$
+
+Hence it can be concluded that above hypothesis holds true. 
+
 
 \subsection{Mention the list of used software and include the source of any functions you wrote for performing your analysis.}
 \begin{itemize}

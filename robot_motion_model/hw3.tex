@@ -3,7 +3,7 @@
 \subsubsection*{1. Fix and, if necessary, rerun your experiment according to the feedback in class.}
 We were not suggested to re-run the experiment.
 
-\subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.} \update{All readings up to significant digits.}
+\subsubsection*{2. Compare the observed and commanded motions: do they fit? if not, describe possible causes for this.} 
 
 \begin{figure}[H]
 \centering
@@ -49,8 +49,9 @@ Fig. \ref{schematic-convention} defines the signs and conventions used for follo
 	\item distance between wheels (track width $t_w$) = 11.4 cm 
 	\item initial position of right wheel ($X_{ri}$, $Y_{ri}$) = (0.0 cm, 20.6 cm) 
 	\item initial position of left wheel ($X_{le}$, $Y_{le}$) = (0.0 cm, 35.1 cm)
-	\item initial pose of robot (X, Y, $\theta$) = (0.0 cm, 27.85 cm, 0.0 rad)
+	\item initial pose of robot (X, Y, $\theta$) = (0.0 cm, 27.85 cm, $0.0^{\circ}$)
 \end{itemize}
+
 
 \textbf{Systematic error}\\
 \begin{itemize}
@@ -186,7 +187,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{gaussian_fits.png}
-\caption{Gaussian fit for the data using scikit-learn KernelDensity function. \update{x labels with units.}}
+\caption{Gaussian fit for the data using scikit-learn KernelDensity function. }
 \label{gaussian}
 \end{figure}
 
@@ -210,7 +211,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 \caption{Straight motion final pose.}
 \label{distribution-straight-motion}
 \end{subfigure}
-\caption{Gaussian and marginal distributions \update{Final pose distribution.}}
+\caption{Gaussian and marginal distributions }
 \end{figure}
 
 \newpage
@@ -235,7 +236,7 @@ If the formula provided in the documentation of lejos API for calculating speed 
 		uncertainty in pose $(\delta y \pm \sigma_y)$ cm & $(0.9 \pm 0.3)$ & $(0.8 \pm 0.3)$ & $(0.9 \pm 0.2)$ & $(0.9 \pm 0.5)$ & $(0.4 \pm 0.5)$ & $(0.2 \pm 0.5)$ \\
 		\hline
 	\end{tabular}
-	\caption{Statistical summary of observed robot motion. Refer to Eq. \ref{mean-deviation}, \ref{standard-deviation}, \ref{mean-angular-deviation}. \update{Measurement uncertainty}}
+	\caption{Statistical summary of observed robot motion. Refer to Eq. \ref{mean-deviation}, \ref{standard-deviation}, \ref{mean-angular-deviation}.}
 	\label{stats}
 \end{table}
 There are three type of uncertainties which we estimated which can occur in the measurement. 
