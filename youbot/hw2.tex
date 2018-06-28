@@ -66,46 +66,37 @@ Yes, the distribution of the final poses follows a Gaussian distribution.
 
 \subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
 
-By observing the observed poses for big and small objects, for 60 samples for the hypothesis ``changing the shape and mass of an object affect the final placing pose", following results were obtained.
+\textbf{Hypothesis 1: changing the shape and mass of an object affect the final placing pose.}
+\begin{itemize}
+\item We randomly sampled 20 comparisons of poses for each motion (\texttt{left, straight, right}) for big, medium and small objects. Therefore the total number of comparisons $(n) = 3 \times 20 =  60$.
+\item We consider $(2.5 \text{ cm}, 2.5 \text{ cm}, 0.2 \text{ rad})$ as acceptable distance between two sampled poses for comparison.
+\item Number of sample instances for which the hypothesis was untrue for observed data, averaged over 100 experimental runs, was found to be $k = 16$.
+\end{itemize}
 
-\vspace{0.5cm}
+Hence, the \textbf{sample error} is computed as follows:
+$$\boxed{error_{S}(h) = \frac{1}{n} \times k = \frac{1}{60} \times 16 = 0.27}$$
 
-We consider $(2.5 cm, 2.5cm, 0.2 rad)$ as acceptable distance between two sampled points.\\
-Average sampling error in hypothesis over observed data = 16. This is averaged value for running 100 random experiments. In each experiment, we took 20 samples for each motion movement.
-\\
-Hence,
-\\
-$$error_{S}(h) = \frac{1}{n} \times 16 = \frac{1}{60} \times 16 = 0.27$$
+For $n$ independently drawn samples, with approximately $95\%$ probability, the \textbf{true error} $(error_{D}(h))$ lies in interval,
 
-hence with approximately 95 $\%$ probability,
-$error_{D}(h)$ lies in interval,
-
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
-
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.27 \times (1 - 0.27)}{60}} = \pm 0.11$$
+$$\boxed{error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} = \pm 1.96 \times \sqrt{\frac{0.27 \times (1 - 0.27)}{60}} = \pm 0.11}$$
 
 Hence it can be concluded that above hypothesis holds true. 
 
 
 
 \subsubsection{If we are to use a single camera measurement for determining the final object pose instead of multiple filtered measurements, is the effect on the final pose estimates significant?}
+\textbf{Hypothesis 2: Using single camera measurement does not affect the final object pose measurement.}
+\begin{itemize}
+\item We randomly sampled 20 comparisons of poses for each motion (\texttt{left, straight, right}) for big, medium and small objects. Therefore the total number of comparisons $(n) = 3 \times 20 =  60$.
+\item We consider $(1.0 \text{ cm}, 1.0 \text{ cm}, 0.1 \text{rad})$ as acceptable distance between two sampled poses for comparison.
+\item Number of sample instances for which the hypothesis was untrue for observed data, was found to be $k = 0$.
+\end{itemize}
 
-By observing the observed poses for big and small objects, for 60 samples for the hypothesis ``Using single camera measurement does not affect the final object pose measurement", following results were obtained.
+Hence, the \textbf{sample error} is computed as follows:
+$$\boxed{error_{S}(h) = \frac{1}{60} \times 0 = 0.0}$$
 
-\vspace{0.5cm}
-We consider $(1.0 cm, 1.0cm, 0.1 rad)$ as acceptable distance between two sampled points.\\
-Error in hypothesis over observed data = 0
-\\
-Hence,
-\\
-$$error_{S}(h) = \frac{1}{60} \times 0 = 0.0$$
-
-hence with approximately 95 $\%$ probability,
-$error_{D}(h)$ lies in interval,
-
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
-
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.0 \times (1)}{60}} = \pm 0.0$$
+For $n$ independently drawn samples, with approximately $95\%$ probability, the \textbf{true error} $(error_{D}(h))$ lies in interval,
+$$\boxed{error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} = \pm 1.96 \times \sqrt{\frac{0.0 \times (1)}{60}} = \pm 0.0}$$
 
 Hence it can be concluded that above hypothesis holds true. 
 

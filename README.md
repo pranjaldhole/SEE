@@ -30,6 +30,7 @@ For showing the update on feedback, use ``\update{text}`` in latex.
 ## YouBot placement Experiment
 ### Reports
 + [Deliverables 6.1: Visualization of data](youbot/hw1.tex)
++ [Deliverables 6.2: Statistical Analysis](youbot/hw2.tex)
 ### Calculations and Visualization
 + [Jupyter notebook](youbot/SEEHomework_AbhishekPadalkar_MaxMensing_PranjalDhole_youbot.ipynb)
 ### Todo
