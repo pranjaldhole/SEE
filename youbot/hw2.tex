@@ -40,9 +40,9 @@ We were not asked to rerun the experiment.
 		\hline
 		                                                       &                  \multicolumn{3}{c|}{left}                   &               \multicolumn{3}{c|}{straight}               &                \multicolumn{3}{c|}{right}                 \\ \hline
 		Our collected data                                     & big                & med                & small              & big               & med               & small             & big               & med               & small             \\ \hline
-		target Pose $x$ cm       & -79.4& -79.4&-79.4 & -79.40 &-79.40 &-79.40 & -41.73 &-41.73 &-41.73 \\ 
-		target Pose $y$ cm       & -99.87& -99.87&-99.87 & -87.48 &-87.48 &-87.48 & -88.63 & -88.63&-88.63 \\ 
-		target Pose $\theta$ rad       & -1.62& -1.62& -1.62& -1.72 & -1.72& -1.72 & -0.92 &  -0.92& -0.92 \\ \hline
+		target Pose $x$ cm       & -109.65& -109.65&-109.65 & -79.40 &-79.40 &-79.40 & -41.73 &-41.73 &-41.73 \\ 
+		target Pose $y$ cm       & -102.75& -102.75&-102.75 & -87.48 &-87.48 &-87.48 & -88.63 & -88.63&-88.63 \\ 
+		target Pose $\theta$ rad       & -2.10& -2.10& -2.10& -1.72 & -1.72& -1.72 & -0.92 &  -0.92& -0.92 \\ \hline
 		uncertainty in pose $(\delta x \pm \sigma_x)$ cm       & $(-107.0 \pm 0.7)$ & $(-107.7 \pm 1.0)$ & $(-112.5 \pm 0.8)$ & $(-76.9 \pm 0.5)$ & $(-77.9 \pm 0.5)$ & $(-80.8 \pm 0.8)$ & $(-40.3 \pm 0.4)$ & $(-42.2 \pm 0.4)$ & $(-46.3 \pm 0.7)$ \\
 		uncertainty in pose $(\delta y \pm \sigma_y)$ cm       & $(-99.5 \pm 0.6)$  & $(-100.9 \pm 0.8)$ & $(-106.1 \pm 0.7)$ & $(-84.4 \pm 0.4)$ & $(-86.0 \pm 0.4)$ & $(-89.4 \pm 0.7)$ & $(-87.1 \pm 0.8)$ & $(-89.5 \pm 0.6)$ & $(-94.3 \pm 1.0)$ \\
 		uncertainty in pose $(\delta \theta \pm \sigma_y)$ rad & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.0)$   & $(-2.1 \pm 0.1)$   & $(-1.6 \pm 0.1)$  & $(-1.6\pm 0.2)$   & $(-1.6 \pm 0.1)$  & $(-0.9 \pm 0.0)$  & $(-0.9 \pm 0.1)$  & $(-0.9 \pm 0.0)$  \\ \hline
@@ -66,24 +66,23 @@ Yes, the distribution of the final poses follows a Gaussian distribution.
 
 \subsubsection{How much does changing the shape and mass of an object affect the final placing pose? Is this effect statistically significant? If the effects are indeed significant, what might have caused them? Hint: Statistical significance can only be determined by performing appropriate hypothesis tests.}
 
-By observing the observed poses for big and small objects, for 60 samples for the hypothesis "changing the shape and mass of an object affect the final placing pose", following results were obtained.
+By observing the observed poses for big and small objects, for 60 samples for the hypothesis ``changing the shape and mass of an object affect the final placing pose", following results were obtained.
 
 \vspace{0.5cm}
 
-
-Error in hypothesis over observed data = 13
+We consider $(2.5 cm, 2.5cm, 0.2 rad)$ as acceptable distance between two sampled points.\\
+Average sampling error in hypothesis over observed data = 16. This is averaged value for running 100 random experiments. In each experiment, we took 20 samples for each motion movement.
 \\
 Hence,
 \\
-$$error_{S}(h) = \frac{1}{n} \times 13 = 0.2166$$
-$$error_{S}(h) = \frac{1}{60} \times 13 = 0.2166$$
+$$error_{S}(h) = \frac{1}{n} \times 16 = \frac{1}{60} \times 16 = 0.27$$
 
 hence with approximately 95 $\%$ probability,
 $error_{D}(h)$ lies in interval,
 
 $$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
 
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.2166 \times (1 - 0.2166)}{60}} = \pm 0.0529$$
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.27 \times (1 - 0.27)}{60}} = \pm 0.11$$
 
 Hence it can be concluded that above hypothesis holds true. 
 
@@ -91,22 +90,22 @@ Hence it can be concluded that above hypothesis holds true.
 
 \subsubsection{If we are to use a single camera measurement for determining the final object pose instead of multiple filtered measurements, is the effect on the final pose estimates significant?}
 
-By observing the observed poses for big and small objects, for 60 samples for the hypothesis "Using single camera measurement does not affect the final object pose measurement", following results were obtained.
+By observing the observed poses for big and small objects, for 60 samples for the hypothesis ``Using single camera measurement does not affect the final object pose measurement", following results were obtained.
 
 \vspace{0.5cm}
-
-Error in hypothesis over observed data = 13
+We consider $(1.0 cm, 1.0cm, 0.1 rad)$ as acceptable distance between two sampled points.\\
+Error in hypothesis over observed data = 0
 \\
 Hence,
 \\
-$$error_{S}(h) = \frac{1}{60} \times 13 = 0.22$$
+$$error_{S}(h) = \frac{1}{60} \times 0 = 0.0$$
 
 hence with approximately 95 $\%$ probability,
 $error_{D}(h)$ lies in interval,
 
 $$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{error_{S}(h) \times (1 - error_{S}(h))}{n}} $$
 
-$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.2166 \times (1 - 0.2166)}{60}} = \pm 0.10$$
+$$error_{D}(h) = \pm 1.96 \times \sqrt{\frac{0.0 \times (1)}{60}} = \pm 0.0$$
 
 Hence it can be concluded that above hypothesis holds true. 
 
